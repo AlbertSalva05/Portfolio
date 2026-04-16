@@ -1,0 +1,32 @@
+[
+	{
+		"icon": "💻",
+		"title": "Web Development",
+		"description": "Building scalable, maintainable, and high-performance applications with modern best practices."
+	},
+	{
+		"icon": "🎨",
+		"title": "UI/UX Design",
+		"description": "Designing intuitive interfaces that balance usability and visual appeal."
+	},
+	{
+		"icon": "🚀",
+		"title": "SEO Optimization",
+		"description": "Improving visibility and performance using technical SEO and Core Web Vitals."
+	},
+	{
+		"icon": "🧪",
+		"title": "Quality Assurance",
+		"description": "Ensuring reliability through structured testing and debugging strategies."
+	},
+	{
+		"icon": "🧩",
+		"title": "Wireframing",
+		"description": "Creating low and high fidelity wireframes for structured user flows."
+	},
+	{
+		"icon": "📊",
+		"title": "Project Management",
+		"description": "Leading teams and delivering projects efficiently with agile workflows."
+	}
+]
