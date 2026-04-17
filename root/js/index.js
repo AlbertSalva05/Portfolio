@@ -1,729 +1,699 @@
 // script starts here
 
-$(function () {
 
 
+// NAVIGATION
+$(function() {
+    const nav = $('.c-nav');
 
-	// Get navigation element
-	const nav = $('.c-nav');
+    $('.c-nav__menu-list a[href^="#"]').on('click', function(e) {
 
-	$('.c-nav__menu-list a[href^="#"]').on('click', function (e) {
+        const target = $($(this).attr('href'));
+        if (!target.length) return;
+        e.preventDefault();
 
-		// Get target section from clicked link
-		const target = $($(this).attr('href'));
+        const navHeight = nav.outerHeight();
+        const position = target.offset().top - navHeight;
 
-		// Stop if target does not exist
-		if (!target.length) return;
-
-		// Prevent default anchor jump
-		e.preventDefault();
-
-		// Get current navigation height
-		const navHeight = nav.outerHeight();
-
-		// Calculate scroll position adjusted for nav height only
-		const position = target.offset().top - navHeight;
-
-		// Smooth scroll to target section
-		$('html, body').animate({
-			scrollTop: position
-		}, 300);
-
-	});
-
+        // Smooth scroll to target section
+        $('html, body').animate({
+            scrollTop: position
+        }, 300);
+    });
 });
 
+
+// MOBILE MENU
 const toggle = document.getElementById("js-toggle");
 const menu = document.getElementById("js-menu");
 const nav = document.getElementById("js-nav");
 
 function setMenuState(isOpen) {
-  menu.classList.toggle("is-active", isOpen);
-  toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    menu.classList.toggle("is-active", isOpen);
+    toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
 }
 
 toggle.addEventListener("click", () => {
-  const isOpen = menu.classList.contains("is-active");
-  setMenuState(!isOpen);
+    const isOpen = menu.classList.contains("is-active");
+    setMenuState(!isOpen);
 });
 
 /* Smooth scroll + close menu safely */
 document.querySelectorAll(".c-nav__link").forEach((link) => {
-  link.addEventListener("click", (e) => {
-    const targetId = link.getAttribute("href");
-    const target = document.querySelector(targetId);
+    link.addEventListener("click", (e) => {
+        const targetId = link.getAttribute("href");
+        const target = document.querySelector(targetId);
 
-    if (!target) return;
+        if (!target) return;
+        e.preventDefault();
 
-    e.preventDefault();
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
 
-    target.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
+        setMenuState(false);
+    });
+});
+
+/* ESC to close */
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        setMenuState(false);
+    }
+});
+
+
+// c-hero animation
+document.addEventListener("DOMContentLoaded", () => {
+    const hero = document.querySelector(".c-hero");
+
+    if (!hero) return;
+
+    const observerHero = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    requestAnimationFrame(() => {
+                        hero.classList.add("is-visible");
+                    });
+                    observerHero.disconnect();
+                }
+            });
+        }, {
+            threshold: 0,
+            rootMargin: "0px 0px -99% 0px"
+        }
+    );
+
+    observerHero.observe(hero);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const text = `A Senior Lead Developer
+and an aspiring Web Designer`;
+
+    const target = document.getElementById("typing-text");
+
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            target.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 35);
+        }
+    }
+
+    type();
+});
+
+// Observe sections
+document.addEventListener("DOMContentLoaded", () => {
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: "0px 0px -10% 0px"
+        }
+    );
+
+    // Observe sections
+    document.querySelectorAll(".c-hero, .c-about").forEach((el) => {
+        observer.observe(el);
     });
 
-    setMenuState(false);
-  });
-});
-
-/* ESC to close (UX improvement) */
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    setMenuState(false);
-  }
 });
 
 
-document.addEventListener("DOMContentLoaded", () => {
-	const hero = document.querySelector(".c-hero");
-
-	if (!hero) return;
-
-	const observer = new IntersectionObserver(
-		(entries) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					requestAnimationFrame(() => {
-						hero.classList.add("is-visible");
-					});
-					observer.disconnect();
-				}
-			});
-		},
-		{
-			threshold: 0.25,
-			rootMargin: "0px 0px -10% 0px"
-		}
-	);
-
-	observer.observe(hero);
-});
-
-
+// observerAbout
 document.addEventListener("DOMContentLoaded", () => {
 
-	const observer = new IntersectionObserver(
-		(entries) => {
-			entries.forEach((entry) => {
+	const aboutSection = document.querySelector('.c-about');
 
-				if (entry.isIntersecting) {
-					entry.target.classList.add("is-visible");
-					observer.unobserve(entry.target); // per-section trigger (better UX)
-				}
-
-			});
-		},
-		{
-			threshold: 0.2,
-			rootMargin: "0px 0px -10% 0px"
-		}
-	);
-
-	// Observe sections
-	document.querySelectorAll(".c-hero, .c-about").forEach((el) => {
-		observer.observe(el);
+	const observerAbout = new IntersectionObserver(entries => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('is-visible');
+			}
+		});
 	});
+
+	observerAbout.observe(aboutSection);
 
 });
 
-const aboutSection = document.querySelector('.c-about');
 
-const observer = new IntersectionObserver(entries => {
-	entries.forEach(entry => {
-		if (entry.isIntersecting) {
-			entry.target.classList.add('is-visible');
-		}
-	});
-});
-
-observer.observe(aboutSection);
-
+// statObserver
 const statNumbers = document.querySelectorAll('.c-about__number');
 
 const statObserver = new IntersectionObserver(entries => {
-	entries.forEach(entry => {
-		if (entry.isIntersecting) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
 
-		statNumbers.forEach(num => {
-			const target = +num.getAttribute('data-target');
-			let count = 0;
+            statNumbers.forEach(num => {
+                const target = +num.getAttribute('data-target');
+                let count = 0;
 
-			const updateCount = () => {
-			const increment = target / 40;
+                const updateCount = () => {
+                    const increment = target / 40;
 
-			if (count < target) {
-				count += increment;
-				num.innerText = Math.floor(count) + '+';
-				requestAnimationFrame(updateCount);
-			} else {
-				num.innerText = target + '+';
-			}
-			};
+                    if (count < target) {
+                        count += increment;
+                        num.innerText = Math.floor(count) + '+';
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        num.innerText = target + '+';
+                    }
+                };
 
-			updateCount();
-		});
+                updateCount();
+            });
 
-		statObserver.disconnect(); // run once only
-		}
-	});
+            statObserver.disconnect(); // run once only
+        }
+    });
 });
 
 statObserver.observe(document.querySelector('.c-about__stats'));
 
 
 
-// const track = document.querySelector('.c-projects__track');
-// const items = document.querySelectorAll('.c-projects__item');
-// const next = document.getElementById('js-next');
-// const prev = document.getElementById('js-prev');
 
-// let current = 0;
+// js-project-slider
+$(document).ready(function() {
 
-// function updateSlider() {
-//   track.style.transform = `translateX(-${current * 100}%)`;
-// }
+    const $slider = $('.js-project-slider');
 
-// next.addEventListener('click', () => {
-// 	current = (current + 1) % items.length;
-// 	updateSlider();
-// });
-
-// prev.addEventListener('click', () => {
-// 	current = (current - 1 + items.length) % items.length;
-// 	updateSlider();
-// });
-
-// setInterval(() => {
-// 	current = (current + 1) % items.length;
-// 	updateSlider();
-// }, 5000);
-
-
-$(document).ready(function () {
-
-	const $slider = $('.js-project-slider');
-
-	/* =========================
+    /* =========================
 		EQUAL HEIGHT FUNCTION
-	========================= */
-	function equalizeProjectDescriptions() {
-		let maxHeight = 0;
-		const $descs = $slider.find('.c-projects__desc');
+    ========================= */
+    function equalizeProjectDescriptions() {
+        let maxHeight = 0;
+        const $descs = $slider.find('.c-projects__desc');
 
-		// reset heights first
-		$descs.css('height', 'auto');
+        // reset heights first
+        $descs.css('height', 'auto');
 
-		// get tallest
-		$descs.each(function () {
-			const h = $(this).outerHeight();
-			if (h > maxHeight) maxHeight = h;
-		});
+        // get tallest
+        $descs.each(function() {
+            const h = $(this).outerHeight();
+            if (h > maxHeight) maxHeight = h;
+        });
 
-		// apply height
-		$descs.css('height', maxHeight + 'px');
-	}
+        // apply height
+        $descs.css('height', maxHeight + 'px');
+    }
 
-	/* =========================
+    /* =========================
 		SLICK INIT
-	========================= */
-	$slider.on('init', function () {
-		equalizeProjectDescriptions();
-	});
+    ========================= */
+    $slider.on('init', function() {
+        equalizeProjectDescriptions();
+    });
 
-	$slider.on('setPosition', function () {
-		equalizeProjectDescriptions();
-	});
+    $slider.on('setPosition', function() {
+        equalizeProjectDescriptions();
+    });
 
-	$slider.slick({
-		centerMode: true,
-		centerPadding: '60px',
-		slidesToShow: 3,
-		arrows: true,
-		dots: true,
-		speed: 700,
-		cssEase: 'cubic-bezier(0.22, 1, 0.36, 1)',
-		pauseOnHover: true,
-		adaptiveHeight: false, // IMPORTANT: keep disabled
-		responsive: [
-			{
-				breakpoint: 768,
-				settings: {
-					arrows: false,
-					centerMode: true,
-					centerPadding: '50px',
-					slidesToShow: 3
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					arrows: false,
-					centerMode: true,
-					centerPadding: '50px',
-					slidesToShow: 1
-				}
-			}
-		]
-	});
+    $slider.slick({
+        centerMode: true,
+        centerPadding: '60px',
+        slidesToShow: 3,
+        arrows: true,
+        dots: true,
+        speed: 700,
+        cssEase: 'cubic-bezier(0.22, 1, 0.36, 1)',
+        pauseOnHover: true,
+        adaptiveHeight: false,
+        responsive: [{
+                breakpoint: 768,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '50px',
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '50px',
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });
 
-	/* =========================
+    /* =========================
 		RESIZE HANDLER (DEBOUNCED)
-	========================= */
-	let resizeTimer;
+    ========================= */
+    let resizeTimer;
 
-	$(window).on('resize', function () {
-		clearTimeout(resizeTimer);
-		resizeTimer = setTimeout(function () {
-			equalizeProjectDescriptions();
-		}, 200);
-	});
+    $(window).on('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            equalizeProjectDescriptions();
+        }, 200);
+    });
 
 });
-// Modal trigger (hook only)
+
+// Modal trigger
 document.querySelectorAll('.js-open-modal').forEach(btn => {
-	btn.addEventListener('click', () => {
-		document.getElementById('modal').style.display = 'flex';
-	});
+    btn.addEventListener('click', () => {
+        document.getElementById('modal').style.display = 'flex';
+    });
 });
 
 
-// const steps = document.querySelectorAll('.c-process__step');
-
-// const processObserver = new IntersectionObserver(entries => {
-// 	entries.forEach(entry => {
-// 		if (entry.isIntersecting) {
-// 			entry.target.classList.add('is-visible');
-// 		}
-// 	});
-// });
-
-// steps.forEach(step => {
-// 	step.style.opacity = 0;
-// 	step.style.transform = 'translateY(30px)';
-// 	step.style.transition = 'all 1s ease';
-// 	processObserver.observe(step);
-// });
-
-
+// fetch and render process
 document.addEventListener('DOMContentLoaded', () => {
 
-	const grid = document.getElementById('js-process-grid');
+    const grid = document.getElementById('js-process-grid');
 
-	if (!grid) {
-		console.error('[Process] Grid not found');
-		return;
-	}
+    if (!grid) {
+        console.error('[Process] Grid not found');
+        return;
+    }
 
-	fetch('./js/process.json')
-		.then(res => {
-			if (!res.ok) throw new Error('Failed to load process.json');
-			return res.json();
-		})
-		.then(data => {
+    fetch('./js/process.json')
+        .then(res => {
+            if (!res.ok) throw new Error('Failed to load process.json');
+            return res.json();
+        })
+        .then(data => {
 
-			if (!Array.isArray(data) || data.length === 0) {
-				console.warn('[Process] No data found');
-				return;
-			}
+            if (!Array.isArray(data) || data.length === 0) {
+                console.warn('[Process] No data found');
+                return;
+            }
 
-			const fragment = document.createDocumentFragment();
+            const fragment = document.createDocumentFragment();
 
-			data.forEach((item, index) => {
+            data.forEach((item, index) => {
 
-				const card = document.createElement('div');
-				card.className = 'c-process__card';
+                const card = document.createElement('div');
+                card.className = 'c-process__card';
 
-				card.innerHTML = `
+                card.innerHTML = `
 					<span class="c-process__step">${item.step}</span>
 					<h3 class="c-process__card-title">${item.title}</h3>
 					<p class="c-process__text">${item.description}</p>
 				`;
 
-				fragment.appendChild(card);
+                fragment.appendChild(card);
 
-				// stagger animation
-				requestAnimationFrame(() => {
+                // stagger animation
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        card.classList.add('is-visible');
+                    }, index * 90);
+                });
+            });
+
+            grid.innerHTML = '';
+            grid.appendChild(fragment);
+        })
+        .catch(err => {
+            console.error('[Process JSON Error]', err);
+        });
+
+});
+
+
+//processObserver
+document.addEventListener("DOMContentLoaded", () => {
+
+	const processCards = document.querySelectorAll('.c-process__card');
+
+	const processObserver = new IntersectionObserver(entries => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				processCards.forEach((card, index) => {
 					setTimeout(() => {
 						card.classList.add('is-visible');
-					}, index * 90);
+					}, index * 120);
 				});
+				processObserver.disconnect();
+			}
+		});
+	});
+
+	processObserver.observe(document.querySelector('.c-process'));
+});
+
+
+//observerPerf
+document.addEventListener("DOMContentLoaded", () => {
+
+	const section = document.querySelector('.c-performance');
+	const counters = document.querySelectorAll('.c-performance__number');
+	const metrics = document.querySelectorAll('.c-performance__metric');
+	const bars = document.querySelectorAll('.c-performance__bar');
+
+	const observerPerf = new IntersectionObserver((entries, obs) => {
+		entries.forEach(entry => {
+			if (!entry.isIntersecting) return;
+
+			// stagger metric reveal
+			metrics.forEach((el, i) => {
+				setTimeout(() => {
+					el.style.opacity = 1;
+					el.style.transform = 'translateY(0)';
+				}, i * 150);
 			});
 
-			grid.innerHTML = '';
-			grid.appendChild(fragment);
-		})
-		.catch(err => {
-			console.error('[Process JSON Error]', err);
+			// counters stagger
+			counters.forEach((counter, i) => {
+				setTimeout(() => animateCounter(counter), i * 200);
+			});
+
+			// bars stagger
+			bars.forEach((bar, i) => {
+				setTimeout(() => {
+					bar.style.opacity = 1;
+					bar.style.transform = 'translateY(0)';
+
+					const fill = bar.querySelector('.c-performance__bar-fill');
+					fill.style.width = fill.dataset.width;
+				}, i * 250);
+			});
+
+			obs.disconnect();
 		});
+	}, {
+		threshold: 0.4
+	});
 
-});
+	observerPerf.observe(section);
 
-const processCards = document.querySelectorAll('.c-process__card');
+	function animateCounter(counter) {
+		const target = +counter.dataset.target;
+		let current = 0;
+		const duration = 1200;
+		const start = performance.now();
 
-const processObserver = new IntersectionObserver(entries => {
-	entries.forEach(entry => {
-		if (entry.isIntersecting) {
-		processCards.forEach((card, index) => {
-			setTimeout(() => {
-			card.classList.add('is-visible');
-			}, index * 120);
-		});
-		processObserver.disconnect();
+		function update(now) {
+			const progress = Math.min((now - start) / duration, 1);
+			current = Math.floor(progress * target);
+			counter.textContent = current;
+
+			if (progress < 1) requestAnimationFrame(update);
 		}
-	});
-});
 
-processObserver.observe(document.querySelector('.c-process'));
-
-
-const section = document.querySelector('.c-performance');
-const counters = document.querySelectorAll('.c-performance__number');
-const metrics = document.querySelectorAll('.c-performance__metric');
-const bars = document.querySelectorAll('.c-performance__bar');
-
-const observerPerf = new IntersectionObserver((entries, obs) => {
-	entries.forEach(entry => {
-		if (!entry.isIntersecting) return;
-
-		// stagger metric reveal
-		metrics.forEach((el, i) => {
-			setTimeout(() => {
-				el.style.opacity = 1;
-				el.style.transform = 'translateY(0)';
-			}, i * 150);
-		});
-
-		// counters stagger
-		counters.forEach((counter, i) => {
-			setTimeout(() => animateCounter(counter), i * 200);
-		});
-
-		// bars stagger
-		bars.forEach((bar, i) => {
-			setTimeout(() => {
-				bar.style.opacity = 1;
-				bar.style.transform = 'translateY(0)';
-
-				const fill = bar.querySelector('.c-performance__bar-fill');
-				fill.style.width = fill.dataset.width;
-			}, i * 250);
-		});
-
-		obs.disconnect();
-	});
-}, {
-	threshold: 0.4
-});
-
-observerPerf.observe(section);
-
-function animateCounter(counter) {
-	const target = +counter.dataset.target;
-	let current = 0;
-	const duration = 1200;
-	const start = performance.now();
-
-	function update(now) {
-		const progress = Math.min((now - start) / duration, 1);
-		current = Math.floor(progress * target);
-		counter.textContent = current;
-
-		if (progress < 1) requestAnimationFrame(update);
+		requestAnimationFrame(update);
 	}
 
-	requestAnimationFrame(update);
-}
+});
 
 
-// const testiTrack = document.querySelector('.c-testimonials__track');
-// const testiItems = document.querySelectorAll('.c-testimonials__item');
-// const testiNext = document.getElementById('js-testi-next');
-// const testiPrev = document.getElementById('js-testi-prev');
+// FAQ accordion
+document.addEventListener("DOMContentLoaded", () => {
+	const faqItems = document.querySelectorAll('.c-faq__item');
 
-// let testiIndex = 0;
+	faqItems.forEach(item => {
+		const btn = item.querySelector('.c-faq__question');
 
-// function updateTesti() {
-//   testiTrack.style.transform = `translateX(-${testiIndex * 100}%)`;
-// }
+		btn.addEventListener('click', () => {
+			const isOpen = item.classList.contains('is-open');
 
-// testiNext.addEventListener('click', () => {
-// 	testiIndex = (testiIndex + 1) % testiItems.length;
-// 	updateTesti();
-// });
+			// close all
+			faqItems.forEach(i => {
+				i.classList.remove('is-open');
+				i.querySelector('.c-faq__question').setAttribute('aria-expanded', 'false');
+			});
 
-// testiPrev.addEventListener('click', () => {
-// 	testiIndex = (testiIndex - 1 + testiItems.length) % testiItems.length;
-// 	updateTesti();
-// });
+			// open current if closed
+			if (!isOpen) {
+				item.classList.add('is-open');
+				btn.setAttribute('aria-expanded', 'true');
+			}
+		});
+	});
+});
 
-// setInterval(() => {
-// 	testiIndex = (testiIndex + 1) % testiItems.length;
-// 	updateTesti();
-// }, 6000);
 
+// contact
+document.addEventListener("DOMContentLoaded", () => {
 
-const faqItems = document.querySelectorAll('.c-faq__item');
+	const form = document.getElementById('js-contact-form');
+	const modal = document.getElementById('js-success-modal');
+	const closeModal = document.getElementById('js-close-modal');
 
-faqItems.forEach(item => {
-	const btn = item.querySelector('.c-faq__question');
+	form.addEventListener('submit', function(e) {
+		e.preventDefault();
 
-	btn.addEventListener('click', () => {
-		const isOpen = item.classList.contains('is-open');
+		// Basic validation check
+		const inputs = form.querySelectorAll('[required]');
+		let valid = true;
 
-		// close all
-		faqItems.forEach(i => {
-			i.classList.remove('is-open');
-			i.querySelector('.c-faq__question').setAttribute('aria-expanded', 'false');
+		inputs.forEach(input => {
+			if (!input.value.trim()) {
+				valid = false;
+				input.style.border = '1px solid red';
+			} else {
+				input.style.border = 'none';
+			}
 		});
 
-		// open current if closed
-		if (!isOpen) {
-			item.classList.add('is-open');
-			btn.setAttribute('aria-expanded', 'true');
-		}
-	});
-});
-
-
-const form = document.getElementById('js-contact-form');
-const modal = document.getElementById('js-success-modal');
-const closeModal = document.getElementById('js-close-modal');
-
-form.addEventListener('submit', function (e) {
-	e.preventDefault();
-
-	// Basic validation check
-	const inputs = form.querySelectorAll('[required]');
-	let valid = true;
-
-	inputs.forEach(input => {
-		if (!input.value.trim()) {
-			valid = false;
-			input.style.border = '1px solid red';
-		} else {
-			input.style.border = 'none';
+		if (valid) {
+			modal.style.display = 'flex';
+			form.reset();
 		}
 	});
 
-	if (valid) {
-		modal.style.display = 'flex';
-		form.reset();
-	}
-});
-
-// Close modal
-closeModal.addEventListener('click', () => {
-	modal.style.display = 'none';
-});
-
-// Close modal on outside click
-window.addEventListener('click', (e) => {
-	if (e.target === modal) {
+	// Close modal
+	closeModal.addEventListener('click', () => {
 		modal.style.display = 'none';
-	}
-});
-
-const btn = document.getElementById('js-scroll-top');
-const footer = document.querySelector('.c-footer');
-const hero = document.querySelector('.c-hero');
-const about = document.querySelector('#about');
-
-/**
- * STATE
- * ensures ABOUT trigger only happens once
- */
-let hasBeenTriggered = false;
-
-/**
- * 1. HERO OBSERVER (BLOCK VISIBILITY)
- * If hero is visible → ALWAYS hide button
- */
-const heroObserver = new IntersectionObserver(
-	(entries) => {
-		entries.forEach((entry) => {
-			if (entry.isIntersecting) {
-				btn.classList.remove('is-visible');
-			}
-		});
-	},
-	{
-		root: null,
-		threshold: 0.2
-	}
-);
-
-if (hero) {
-	heroObserver.observe(hero);
-}
-
-/**
- * 2. ABOUT OBSERVER (TRIGGER VISIBILITY ONCE)
- */
-const aboutObserver = new IntersectionObserver(
-	(entries) => {
-		entries.forEach((entry) => {
-			if (entry.isIntersecting && !hasBeenTriggered) {
-				btn.classList.add('is-visible');
-				hasBeenTriggered = true;
-
-				// stop observing for performance
-				aboutObserver.disconnect();
-			}
-		});
-	},
-	{
-		root: null,
-		threshold: 0.25
-	}
-);
-
-if (about) {
-	aboutObserver.observe(about);
-}
-
-/**
- * 3. FOOTER STATE (UNCHANGED)
- */
-function updateFooterState() {
-	const scrollY = window.scrollY;
-
-	const footerTop = footer.offsetTop;
-	const footerBottom = footerTop + footer.offsetHeight;
-
-	const isInFooter =
-		scrollY + window.innerHeight >= footerTop &&
-		scrollY < footerBottom;
-
-	if (isInFooter) {
-		btn.classList.add('is-in-footer');
-	} else {
-		btn.classList.remove('is-in-footer');
-	}
-}
-
-window.addEventListener('scroll', updateFooterState, {
-	passive: true
-});
-
-/**
- * 4. CLICK ACTION
- */
-btn.addEventListener('click', () => {
-	window.scrollTo({
-		top: 0,
-		behavior: 'smooth'
 	});
+
+	// Close modal on outside click
+	window.addEventListener('click', (e) => {
+		if (e.target === modal) {
+			modal.style.display = 'none';
+		}
+	});
+
+});
+
+$(function() {
+    const $btn = $('#js-scroll-top');
+    const $about = $('#about');
+    const $hero = $('.c-hero'); // 👈 ADD HERO SECTION
+    const $footer = $('.c-footer');
+
+    let aboutStarted = false;
+    let footerVisible = false;
+    let heroVisible = true; // default = hero is visible on page load
+
+    /* =========================
+		UPDATE BUTTON STATE
+		PRIORITY: HERO > FOOTER > ABOUT
+       ========================= */
+    function updateButtonState() {
+
+        // 🔴 HIGHEST PRIORITY: HERO OVERRIDE (ALWAYS HIDE)
+        if (heroVisible) {
+            $btn.removeClass('is-visible is-in-footer');
+            return;
+        }
+
+        // ✔ ABOUT RULE
+        if (aboutStarted) {
+            $btn.addClass('is-visible');
+        } else {
+            $btn.removeClass('is-visible is-in-footer');
+            return;
+        }
+
+        // ✔ FOOTER RULE (kept intact)
+        if (footerVisible) {
+            $btn.addClass('is-in-footer');
+        } else {
+            $btn.removeClass('is-in-footer');
+        }
+    }
+
+    /* =========================
+       HERO OBSERVER (NEW)
+       ========================= */
+    const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            heroVisible = entry.isIntersecting;
+            updateButtonState();
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: "-500px 0px 0px 0px" // 👈 KEY FIX
+    });
+
+    if ($hero.length) heroObserver.observe($hero[0]);
+
+    /* =========================
+       ABOUT START DETECTION
+       ========================= */
+    const aboutObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                aboutStarted = true;
+                updateButtonState();
+            }
+        });
+    }, {
+        threshold: 0,
+    });
+
+    if ($about.length) aboutObserver.observe($about[0]);
+
+    /* =========================
+       FOOTER OBSERVER (UNCHANGED)
+       ========================= */
+    const footerObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            footerVisible = entry.isIntersecting;
+            updateButtonState();
+        });
+    }, {
+        threshold: 0
+    });
+
+    if ($footer.length) footerObserver.observe($footer[0]);
+
+    /* =========================
+       SCROLL TO TOP
+       ========================= */
+    $btn.on('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 });
 
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
 
-	const grid = document.getElementById('js-expertise-grid');
-	const modalExpertise = document.getElementById('js-expertise-modal');
+    const grid = document.getElementById('js-expertise-grid');
+    const modalExpertise = document.getElementById('js-expertise-modal');
 
-	const modalIcon = document.getElementById('js-modal-icon');
-	const modalTitle = document.getElementById('js-modal-title');
-	const modalText = document.getElementById('js-modal-text');
-	const modalClose = document.getElementById('js-modal-close');
+    const modalIcon = document.getElementById('js-modal-icon');
+    const modalTitle = document.getElementById('js-modal-title');
+    const modalText = document.getElementById('js-modal-text');
+    const modalClose = document.getElementById('js-modal-close');
 
-	if (!grid || !modalExpertise) {
-		console.error('[Expertise] Missing elements');
-		return;
-	}
+    if (!grid || !modalExpertise) {
+        console.error('[Expertise] Missing elements');
+        return;
+    }
 
-	// Load JSON
-	fetch('./js/expertise.json')
-		.then(res => {
-			if (!res.ok) throw new Error('Failed to load JSON');
-			return res.json();
-		})
-		.then(data => {
+    // Load JSON
+    fetch('./js/expertise.json')
+        .then(res => {
+            if (!res.ok) throw new Error('Failed to load JSON');
+            return res.json();
+        })
+        .then(data => {
 
-			grid.innerHTML = '';
+            grid.innerHTML = '';
 
-			data.forEach((item, index) => {
+            data.forEach((item, index) => {
 
-				const card = document.createElement('div');
-				card.className = 'c-expertise__card';
+                const card = document.createElement('div');
+                card.className = 'c-expertise__card';
 
-				card.innerHTML = `
+                card.innerHTML = `
 					<div class="c-expertise__icon">${item.icon}</div>
 					<h3 class="c-expertise__card-title">${item.title}</h3>
 				`;
 
-				card.addEventListener('click', () => {
+                card.addEventListener('click', () => {
 
-					// Inject modal content
-					modalIcon.textContent = item.icon;
-					modalTitle.textContent = item.title;
-					modalText.textContent = item.description;
+                    // Inject modal content
+                    modalIcon.textContent = item.icon;
+                    modalTitle.textContent = item.title;
+                    modalText.textContent = item.description;
 
-					// Open modal
-					modalExpertise.classList.add('is-active');
-					document.body.style.overflow = 'hidden';
-				});
+                    // Open modal
+                    modalExpertise.classList.add('is-active');
+                    document.body.style.overflow = 'hidden';
+                });
 
-				grid.appendChild(card);
+                grid.appendChild(card);
 
-				requestAnimationFrame(() => {
-					setTimeout(() => {
-						card.classList.add('is-visible');
-					}, index * 90);
-				});
-			});
-		})
-		.catch(err => {
-			console.error('[Expertise JSON Error]', err);
-		});
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        card.classList.add('is-visible');
+                    }, index * 90);
+                });
+            });
+        })
+        .catch(err => {
+            console.error('[Expertise JSON Error]', err);
+        });
 
-	// Close modal
-	function closeModal() {
-		modalExpertise.classList.remove('is-active');
-		document.body.style.overflow = '';
-	}
+    // Close modal
+    function closeModal() {
+        modalExpertise.classList.remove('is-active');
+        document.body.style.overflow = '';
+    }
 
-	modalClose.addEventListener('click', closeModal);
+    modalClose.addEventListener('click', closeModal);
 
-	modalExpertise.addEventListener('click', (e) => {
-		if (e.target === modalExpertise) closeModal();
-	});
+    modalExpertise.addEventListener('click', (e) => {
+        if (e.target === modalExpertise) closeModal();
+    });
 
-	window.addEventListener('keydown', (e) => {
-		if (e.key === 'Escape') closeModal();
-	});
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
 });
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
 
-	const slider = document.getElementById('js-testimonials-slider');
+    const slider = document.getElementById('js-testimonials-slider');
 
-	if (!slider) {
-		console.error('[Testimonials] Slider not found');
-		return;
-	}
+    if (!slider) {
+        console.error('[Testimonials] Slider not found');
+        return;
+    }
 
-	fetch('./js/testimonials.json')
-		.then(res => {
-			if (!res.ok) throw new Error('Failed to load testimonials.json');
-			return res.json();
-		})
-		.then(data => {
+    fetch('./js/testimonials.json')
+        .then(res => {
+            if (!res.ok) throw new Error('Failed to load testimonials.json');
+            return res.json();
+        })
+        .then(data => {
 
-			slider.innerHTML = '';
+            slider.innerHTML = '';
 
-			data.forEach((item, index) => {
+            data.forEach((item, index) => {
 
-				// safer star rendering
-				const stars = Array.from({ length: 5 }, (_, i) =>
-					i < item.rating ? '★' : '☆'
-				).join('');
+                // safer star rendering
+                const stars = Array.from({
+                        length: 5
+                    }, (_, i) =>
+                    i < item.rating ? '★' : '☆'
+                ).join('');
 
-				const card = document.createElement('div');
-				card.className = 'c-testimonials__item';
+                const card = document.createElement('div');
+                card.className = 'c-testimonials__item';
 
-				card.innerHTML = `
+                card.innerHTML = `
 					<figure class="c-testimonials__card" itemscope itemtype="https://schema.org/Review">
 
 						<blockquote class="c-testimonials__quote" itemprop="reviewBody">
@@ -747,72 +717,70 @@ document.addEventListener('DOMContentLoaded', function () {
 					</figure>
 				`;
 
-				slider.appendChild(card);
+                slider.appendChild(card);
 
-				// animation
-				setTimeout(() => {
-					card.classList.add('is-visible');
-				}, index * 90);
-			});
+                // animation
+                setTimeout(() => {
+                    card.classList.add('is-visible');
+                }, index * 90);
+            });
 
-			// ✅ INIT SLICK AFTER CONTENT IS READY
-			initTestimonialsSlider();
+            // ✅ INIT SLICK AFTER CONTENT IS READY
+            initTestimonialsSlider();
 
-		})
-		.catch(err => {
-			console.error('[Testimonials JSON Error]', err);
-		});
+        })
+        .catch(err => {
+            console.error('[Testimonials JSON Error]', err);
+        });
 
 
-	/**
-	 * Slick Init (Safe)
-	 */
-	function initTestimonialsSlider() {
-		const $slider = $('.js-testimonials-slider');
+    /**
+     * Slick Init (Safe)
+     */
+    function initTestimonialsSlider() {
+        const $slider = $('.js-testimonials-slider');
 
-		if ($slider.hasClass('slick-initialized')) {
-			$slider.slick('unslick');
-		}
+        if ($slider.hasClass('slick-initialized')) {
+            $slider.slick('unslick');
+        }
 
-		$slider.slick({
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			arrows: true,
-			dots: true,
-			infinite: true,
-			autoplay: true,
-			autoplaySpeed: 4000,
-			speed: 600,
-			cssEase: 'cubic-bezier(.22,.61,.36,1)',
+        $slider.slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: true,
+            dots: true,
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 4000,
+            speed: 600,
+            cssEase: 'cubic-bezier(.22,.61,.36,1)',
 
-			pauseOnHover: true,
-			pauseOnFocus: true,
+            pauseOnHover: true,
+            pauseOnFocus: true,
 
-			adaptiveHeight: false, // 🔥 CRITICAL FIX
+            adaptiveHeight: false, // 🔥 CRITICAL FIX
 
-			lazyLoad: 'ondemand',
+            lazyLoad: 'ondemand',
 
-			responsive: [
-				{
-					breakpoint: 768,
-					settings: {
-						arrows: false
-					}
-				}
-			]
-		});
-	}
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                    arrows: false
+                }
+            }]
+        });
+    }
 
-	$('.js-testimonials-slider').on('setPosition', function () {
-		let maxHeight = 0;
+    $('.js-testimonials-slider').on('setPosition', function() {
+        let maxHeight = 0;
 
-		$('.c-testimonials__card').each(function () {
-			const h = $(this).outerHeight();
-			if (h > maxHeight) maxHeight = h;
-		});
+        $('.c-testimonials__card').each(function() {
+            const h = $(this).outerHeight();
+            if (h > maxHeight) maxHeight = h;
+        });
 
-		$('.c-testimonials__card').css('min-height', maxHeight);
-	});
+        $('.c-testimonials__card').css('min-height', maxHeight);
+    });
 
 });
 
@@ -820,9 +788,9 @@ document.addEventListener('DOMContentLoaded', function () {
 const formWrap = document.querySelector('.c-contact__form-wrap');
 
 window.addEventListener('scroll', () => {
-	const rect = formWrap.getBoundingClientRect();
-	if (rect.top < window.innerHeight - 100) {
-		formWrap.style.opacity = 1;
-		formWrap.style.transform = 'translateY(0)';
-	}
+    const rect = formWrap.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+        formWrap.style.opacity = 1;
+        formWrap.style.transform = 'translateY(0)';
+    }
 });
