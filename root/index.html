@@ -20,6 +20,7 @@
 	<meta name="twitter:card" content="summary_large_image">
 
 	<!-- Stylesheets here... -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="css/slick/slick.css">
 	<link rel="stylesheet" type="text/css" href="css/slick/slick-theme.css">
 	<link rel="stylesheet" type="text/css" href="css/component.css">
@@ -32,37 +33,47 @@
 	<!-- End Google Tag Manager (noscript) -->
 
 	<!-- start c-nav -->
-	<header class="c-nav" id="js-nav">
-		<div class="c-nav__inner">
-			<!-- Logo -->
-			<div class="c-nav__logo">
-				<a href="#">My Portfolio</a>
-			</div>
+	<!-- start c-nav -->
+<header class="c-nav" id="js-nav">
+  <div class="c-nav__inner">
 
-			<!-- Desktop Menu -->
-			<nav class="c-nav__menu" id="js-menu">
-				<ul class="c-nav__menu-list">
-					<li><a href="#hero" class="c-nav__link">Home</a></li>
-					<li><a href="#about" class="c-nav__link">About</a></li>
-					<li><a href="#projects" class="c-nav__link">Projects</a></li>
-					<li><a href="#process" class="c-nav__link">Process</a></li>
-					<li><a href="#faq" class="c-nav__link">FAQ</a></li>
-					<li><a href="#contact" class="c-nav__link">Contact</a></li>
-				</ul>
-			</nav>
+    <!-- Logo -->
+    <div class="c-nav__logo">
+      <a href="#hero">My Portfolio</a>
+    </div>
 
-			<!-- Hamburger -->
-			<button class="c-nav__toggle" id="js-toggle" aria-label="Toggle Menu">
-				<span class="c-nav__bar"></span>
-				<span class="c-nav__bar"></span>
-				<span class="c-nav__bar"></span>
-			</button>
-		</div>
-	</header>
+    <!-- Navigation -->
+    <nav class="c-nav__menu" id="js-menu" aria-label="Primary Navigation">
+      <ul class="c-nav__menu-list">
+        <li><a href="#hero" class="c-nav__link">Home</a></li>
+        <li><a href="#about" class="c-nav__link">About</a></li>
+        <li><a href="#projects" class="c-nav__link">Projects</a></li>
+        <li><a href="#process" class="c-nav__link">Process</a></li>
+        <li><a href="#faq" class="c-nav__link">FAQ</a></li>
+        <li><a href="#contact" class="c-nav__link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hamburger -->
+    <button
+      class="c-nav__toggle"
+      id="js-toggle"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="js-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+</header>
+<!-- end c-nav -->
 	<!-- end c-nav -->
 
 	<!-- start c-hero -->
-	<section class="c-hero" id="hero">
+	<section class="c-hero section-bg" id="hero">
 
 		<!-- NEW: animated background layer -->
 		<div class="c-hero__bg" aria-hidden="true">
@@ -96,7 +107,7 @@
 				<div class="c-hero__card">
 					<p class="c-hero__badge">Available for new opportunities</p>
 					<ul class="c-hero__stats">
-						<li><strong>10+</strong> Projects</li>
+						<li><strong>70+</strong> Projects</li>
 						<li><strong>95+</strong> Performance Score</li>
 						<li><strong>5+</strong> Years Experience</li>
 					</ul>
@@ -108,7 +119,7 @@
 	<!-- end c-hero -->
 
 	<!-- start c-about -->
-	<section class="c-about" id="about">
+	<section class="c-about section-bg" id="about">
 
 		<!-- NEW background layer -->
 		<div class="c-about__bg" aria-hidden="true"></div>
@@ -186,7 +197,7 @@
 	<!-- end c-about -->
 
 	<!-- start c-expertise -->
-	<section class="c-expertise" id="expertise">
+	<section class="c-expertise section-bg" id="expertise">
 		<div class="c-expertise__inner">
 
 			<h2 class="c-expertise__title">
@@ -213,7 +224,7 @@
 	</div>
 
 	<!-- start c-projects -->
-	<section class="c-projects" id="projects">
+	<section class="c-projects section-bg" id="projects">
 		<div class="c-projects__inner">
 
 			<h2 class="c-projects__title">
@@ -372,7 +383,7 @@
 	<!-- end c-projects -->
 
 	<!-- start c-process -->
-<section class="c-process" id="process">
+<section class="c-process section-bg" id="process">
 	<div class="c-process__inner">
 
 		<h2 class="c-process__title">
@@ -388,7 +399,7 @@
 <!-- end c-process -->
 
 	<!-- start c-performance -->
-	<section class="c-performance" id="performance">
+	<section class="c-performance section-bg" id="performance">
 	<div class="c-performance__bg"></div>
 
 	<div class="c-performance__inner">
@@ -464,7 +475,7 @@
 	<!-- end c-performance -->
 
 	<!-- start c-testimonials -->
-<section class="c-testimonials" id="testimonials">
+<section class="c-testimonials section-bg" id="testimonials">
   <div class="c-testimonials__inner">
 
     <h2 class="c-testimonials__title">
@@ -480,7 +491,7 @@
 <!-- end c-testimonials -->
 
 	<!-- start c-faq -->
-<section class="c-faq" id="faq">
+<section class="c-faq section-bg" id="faq">
 
 	<div class="c-faq__inner">
 
@@ -591,49 +602,74 @@
 <!-- end c-faq -->
 
 	<!-- start c-contact -->
-	<section class="c-contact" id="contact">
-		<div class="c-contact__inner">
+<section class="c-contact section-bg" id="contact">
 
-			<h2 class="c-contact__title">
-			Let’s Build Something <span class="c-contact__highlight">Exceptional</span>
-			</h2>
+	<!-- Floating Background Shapes -->
+	<div class="c-contact__bg">
+		<span class="c-contact__shape c-contact__shape--1"></span>
+		<span class="c-contact__shape c-contact__shape--2"></span>
+		<span class="c-contact__shape c-contact__shape--3"></span>
+	</div>
 
-			<p class="c-contact__text">
-			Have a project in mind? Let’s discuss how we can turn your idea into a high-performance digital solution.
-			</p>
+	<div class="c-contact__inner">
 
-			<!-- Form -->
-			<form class="c-contact__form" id="js-contact-form">
+		<div class="c-contact__grid">
 
-				<div class="c-contact__row">
+			<!-- LEFT -->
+			<div class="c-contact__info">
+				<h2 class="c-contact__title">
+					Let’s Build Something <span class="c-contact__highlight">Exceptional</span>
+				</h2>
+
+				<p class="c-contact__desc">
+					Have an idea or project in mind? Let’s create something impactful, scalable, and conversion-driven.
+				</p>
+
+				<ul class="c-contact__benefits">
+					<li>✔ Fast response within 24 hours</li>
+					<li>✔ Conversion-focused solutions</li>
+					<li>✔ Clean, scalable development</li>
+				</ul>
+
+				<div class="c-contact__image">
+					<img src="images/img_contact_01.png" alt="Contact Illustration">
+				</div>
+			</div>
+
+			<!-- RIGHT -->
+			<div class="c-contact__form-wrap">
+				<form class="c-contact__form" id="js-contact-form">
+
 					<input type="text" class="c-contact__input" name="name" placeholder="Your Name" required>
-				</div>
 
-				<div class="c-contact__row">
 					<input type="email" class="c-contact__input" name="email" placeholder="Your Email" required>
-				</div>
 
-				<div class="c-contact__row">
 					<select class="c-contact__input" name="project">
 						<option>Project Type</option>
 						<option>Web Development</option>
 						<option>SEO Optimization</option>
 						<option>UI/UX Design</option>
 					</select>
-				</div>
 
-				<div class="c-contact__row">
-					<textarea class="c-contact__input c-contact__textarea" name="message" placeholder="Your Message" required></textarea>
-				</div>
+						<select class="c-contact__input" name="contact_method" required>
+							<option value="email">Email</option>
+							<option value="chat">Chat (Messenger / WhatsApp)</option>
+							<option value="call">Phone Call</option>
+						</select>
 
-				<button type="submit" class="c-btn c-btn--primary c-contact__btn">
-					Send Message
-				</button>
+					<textarea class="c-contact__input c-contact__textarea" name="message" placeholder="Tell me about your project..." required></textarea>
 
-			</form>
+					<button type="submit" class="c-btn c-btn--primary c-contact__btn">
+						Send Message 🚀
+					</button>
+
+				</form>
+			</div>
 
 		</div>
-	</section>
+
+	</div>
+</section>
 	<!-- end c-contact -->
 
 	<!-- Success Modal -->
@@ -646,68 +682,69 @@
 	</div>
 
 	<!-- start c-footer -->
-	<footer class="c-footer">
-		<div class="c-footer__inner">
+<footer class="c-footer" id="footer">
 
-			<!-- Top -->
-			<div class="c-footer__top">
+	<div class="c-footer__bg"></div>
 
-				<!-- Brand -->
-				<div class="c-footer__col">
-					<h3 class="c-footer__logo">Portfolio</h3>
-					<p class="c-footer__desc">
+	<div class="c-footer__inner">
+
+		<div class="c-footer__top">
+			<div class="c-footer__col">
+				<h3 class="c-footer__logo">Portfolio</h3>
+				<p class="c-footer__desc">
 					Building scalable, high-performance web experiences with a focus on quality and results.
-					</p>
-				</div>
+				</p>
+			</div>
 
-				<!-- Navigation -->
-				<div class="c-footer__col">
-					<h4 class="c-footer__title">Quick Links</h4>
-					<ul class="c-footer__list">
+			<div class="c-footer__col c-footer__col--divider">
+				<h4 class="c-footer__title">Quick Links</h4>
+				<ul class="c-footer__list">
 					<li><a href="#hero">Home</a></li>
 					<li><a href="#about">About</a></li>
 					<li><a href="#projects">Projects</a></li>
 					<li><a href="#contact">Contact</a></li>
-					</ul>
-				</div>
+				</ul>
+			</div>
 
-				<!-- Services -->
-				<div class="c-footer__col">
-					<h4 class="c-footer__title">Services</h4>
-					<ul class="c-footer__list">
+			<div class="c-footer__col c-footer__col--divider">
+				<h4 class="c-footer__title">Services</h4>
+				<ul class="c-footer__list">
 					<li>Web Development</li>
 					<li>SEO Optimization</li>
 					<li>UI/UX Design</li>
 					<li>QA & Testing</li>
-					</ul>
-				</div>
-
-				<!-- Social -->
-				<div class="c-footer__col">
-					<h4 class="c-footer__title">Connect</h4>
-					<div class="c-footer__social">
-					<a href="#">LinkedIn</a>
-					<a href="#">GitHub</a>
-					<a href="#">Email</a>
-					</div>
-				</div>
-
+				</ul>
 			</div>
 
-			<!-- Bottom -->
-			<div class="c-footer__bottom">
-				<p class="c-footer__copy">
-					© 2026 Your Name. All rights reserved.
-				</p>
+			<div class="c-footer__col c-footer__col--divider">
+				<h4 class="c-footer__title">Connect</h4>
 
-				<button class="c-footer__top-btn" id="js-scroll-top">
-					↑ Back to Top
-				</button>
+				<div class="c-footer__social">
+					<a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+					<a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+					<a href="#"><i class="fa-brands fa-github"></i></a>
+					<a href="#"><i class="fa-solid fa-paintbrush"></i></a>
+					<a href="#"><i class="fa-solid fa-envelope"></i></a>
+				</div>
 			</div>
-
 		</div>
-	</footer>
-	<!-- end c-footer -->
+
+		<div class="c-footer__bottom">
+			<p class="c-footer__copy">© 2026 Your Name. All rights reserved.</p>
+		</div>
+
+		<!-- anchor for button positioning -->
+		<div class="c-footer__anchor"></div>
+
+	</div>
+
+	<!-- BACK TO TOP -->
+	<button class="c-footer__top-btn" id="js-scroll-top" aria-label="Back to top">
+		<i class="fa-solid fa-arrow-up"></i>
+	</button>
+
+</footer>
+<!-- end c-footer -->
 
 	<!-- Scripts here... -->
 	<script src="js/jquery-3.6.1.min.js"></script>

@@ -33,37 +33,44 @@ $(function () {
 
 });
 
-// Mobile Toggle
-const toggle = document.getElementById('js-toggle');
-const menu = document.getElementById('js-menu');
+const toggle = document.getElementById("js-toggle");
+const menu = document.getElementById("js-menu");
+const nav = document.getElementById("js-nav");
 
-toggle.addEventListener('click', () => {
-	menu.classList.toggle('is-active');
+function setMenuState(isOpen) {
+  menu.classList.toggle("is-active", isOpen);
+  toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+}
+
+toggle.addEventListener("click", () => {
+  const isOpen = menu.classList.contains("is-active");
+  setMenuState(!isOpen);
 });
 
-	// Smooth Scroll
-document.querySelectorAll('.c-nav__link').forEach(link => {
-	link.addEventListener('click', function (e) {
-		e.preventDefault();
-		const target = document.querySelector(this.getAttribute('href'));
+/* Smooth scroll + close menu safely */
+document.querySelectorAll(".c-nav__link").forEach((link) => {
+  link.addEventListener("click", (e) => {
+    const targetId = link.getAttribute("href");
+    const target = document.querySelector(targetId);
 
-		target.scrollIntoView({
-			behavior: 'smooth'
-		});
+    if (!target) return;
 
-			menu.classList.remove('is-active');
-		});
-	});
+    e.preventDefault();
 
-	// Sticky Shrink Effect
-	const nav = document.getElementById('js-nav');
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
 
-	window.addEventListener('scroll', () => {
-	if (window.scrollY > 50) {
-		nav.style.padding = '5px 0';
-	} else {
-		nav.style.padding = '0';
-	}
+    setMenuState(false);
+  });
+});
+
+/* ESC to close (UX improvement) */
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    setMenuState(false);
+  }
 });
 
 
@@ -516,13 +523,97 @@ window.addEventListener('click', (e) => {
 	}
 });
 
-document.getElementById('js-scroll-top').addEventListener('click', () => {
+const btn = document.getElementById('js-scroll-top');
+const footer = document.querySelector('.c-footer');
+const hero = document.querySelector('.c-hero');
+const about = document.querySelector('#about');
+
+/**
+ * STATE
+ * ensures ABOUT trigger only happens once
+ */
+let hasBeenTriggered = false;
+
+/**
+ * 1. HERO OBSERVER (BLOCK VISIBILITY)
+ * If hero is visible → ALWAYS hide button
+ */
+const heroObserver = new IntersectionObserver(
+	(entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				btn.classList.remove('is-visible');
+			}
+		});
+	},
+	{
+		root: null,
+		threshold: 0.2
+	}
+);
+
+if (hero) {
+	heroObserver.observe(hero);
+}
+
+/**
+ * 2. ABOUT OBSERVER (TRIGGER VISIBILITY ONCE)
+ */
+const aboutObserver = new IntersectionObserver(
+	(entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting && !hasBeenTriggered) {
+				btn.classList.add('is-visible');
+				hasBeenTriggered = true;
+
+				// stop observing for performance
+				aboutObserver.disconnect();
+			}
+		});
+	},
+	{
+		root: null,
+		threshold: 0.25
+	}
+);
+
+if (about) {
+	aboutObserver.observe(about);
+}
+
+/**
+ * 3. FOOTER STATE (UNCHANGED)
+ */
+function updateFooterState() {
+	const scrollY = window.scrollY;
+
+	const footerTop = footer.offsetTop;
+	const footerBottom = footerTop + footer.offsetHeight;
+
+	const isInFooter =
+		scrollY + window.innerHeight >= footerTop &&
+		scrollY < footerBottom;
+
+	if (isInFooter) {
+		btn.classList.add('is-in-footer');
+	} else {
+		btn.classList.remove('is-in-footer');
+	}
+}
+
+window.addEventListener('scroll', updateFooterState, {
+	passive: true
+});
+
+/**
+ * 4. CLICK ACTION
+ */
+btn.addEventListener('click', () => {
 	window.scrollTo({
 		top: 0,
 		behavior: 'smooth'
 	});
-})
-
+});
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -723,4 +814,15 @@ document.addEventListener('DOMContentLoaded', function () {
 		$('.c-testimonials__card').css('min-height', maxHeight);
 	});
 
+});
+
+
+const formWrap = document.querySelector('.c-contact__form-wrap');
+
+window.addEventListener('scroll', () => {
+	const rect = formWrap.getBoundingClientRect();
+	if (rect.top < window.innerHeight - 100) {
+		formWrap.style.opacity = 1;
+		formWrap.style.transform = 'translateY(0)';
+	}
 });
