@@ -298,6 +298,59 @@ document.querySelectorAll('.js-open-modal').forEach(btn => {
 // });
 
 
+document.addEventListener('DOMContentLoaded', () => {
+
+	const grid = document.getElementById('js-process-grid');
+
+	if (!grid) {
+		console.error('[Process] Grid not found');
+		return;
+	}
+
+	fetch('./js/process.json')
+		.then(res => {
+			if (!res.ok) throw new Error('Failed to load process.json');
+			return res.json();
+		})
+		.then(data => {
+
+			if (!Array.isArray(data) || data.length === 0) {
+				console.warn('[Process] No data found');
+				return;
+			}
+
+			const fragment = document.createDocumentFragment();
+
+			data.forEach((item, index) => {
+
+				const card = document.createElement('div');
+				card.className = 'c-process__card';
+
+				card.innerHTML = `
+					<span class="c-process__step">${item.step}</span>
+					<h3 class="c-process__card-title">${item.title}</h3>
+					<p class="c-process__text">${item.description}</p>
+				`;
+
+				fragment.appendChild(card);
+
+				// stagger animation
+				requestAnimationFrame(() => {
+					setTimeout(() => {
+						card.classList.add('is-visible');
+					}, index * 90);
+				});
+			});
+
+			grid.innerHTML = '';
+			grid.appendChild(fragment);
+		})
+		.catch(err => {
+			console.error('[Process JSON Error]', err);
+		});
+
+});
+
 const processCards = document.querySelectorAll('.c-process__card');
 
 const processObserver = new IntersectionObserver(entries => {
@@ -551,34 +604,123 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-$(document).ready(function () {
-	$('.js-testimonials-slider').slick({
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		arrows: true,
-		dots: true,
-		infinite: true,
-		autoplay: true,
-		autoplaySpeed: 4000,
-		speed: 600,
-		cssEase: 'cubic-bezier(.22,.61,.36,1)',
+document.addEventListener('DOMContentLoaded', function () {
 
-		// UX Improvements
-		pauseOnHover: true,
-		pauseOnFocus: true,
-		adaptiveHeight: false,
+	const slider = document.getElementById('js-testimonials-slider');
 
-		// Performance
-		lazyLoad: 'ondemand',
+	if (!slider) {
+		console.error('[Testimonials] Slider not found');
+		return;
+	}
 
-		// Mobile-first
-		responsive: [
-			{
-				breakpoint: 768,
-				settings: {
-					arrows: false
+	fetch('./js/testimonials.json')
+		.then(res => {
+			if (!res.ok) throw new Error('Failed to load testimonials.json');
+			return res.json();
+		})
+		.then(data => {
+
+			slider.innerHTML = '';
+
+			data.forEach((item, index) => {
+
+				// safer star rendering
+				const stars = Array.from({ length: 5 }, (_, i) =>
+					i < item.rating ? '★' : '☆'
+				).join('');
+
+				const card = document.createElement('div');
+				card.className = 'c-testimonials__item';
+
+				card.innerHTML = `
+					<figure class="c-testimonials__card" itemscope itemtype="https://schema.org/Review">
+
+						<blockquote class="c-testimonials__quote" itemprop="reviewBody">
+							${item.review}
+						</blockquote>
+
+						<figcaption class="c-testimonials__author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+							<img src="${item.image}" alt="${item.name}" width="80" height="80" loading="lazy" decoding="async">
+							<div>
+								<strong itemprop="name">${item.name}</strong>
+								<span itemprop="jobTitle">${item.role}</span>
+							</div>
+						</figcaption>
+
+						<div class="c-testimonials__rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+							<meta itemprop="ratingValue" content="${item.rating}">
+							<meta itemprop="bestRating" content="5">
+							${stars}
+						</div>
+
+					</figure>
+				`;
+
+				slider.appendChild(card);
+
+				// animation
+				setTimeout(() => {
+					card.classList.add('is-visible');
+				}, index * 90);
+			});
+
+			// ✅ INIT SLICK AFTER CONTENT IS READY
+			initTestimonialsSlider();
+
+		})
+		.catch(err => {
+			console.error('[Testimonials JSON Error]', err);
+		});
+
+
+	/**
+	 * Slick Init (Safe)
+	 */
+	function initTestimonialsSlider() {
+		const $slider = $('.js-testimonials-slider');
+
+		if ($slider.hasClass('slick-initialized')) {
+			$slider.slick('unslick');
+		}
+
+		$slider.slick({
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			arrows: true,
+			dots: true,
+			infinite: true,
+			autoplay: true,
+			autoplaySpeed: 4000,
+			speed: 600,
+			cssEase: 'cubic-bezier(.22,.61,.36,1)',
+
+			pauseOnHover: true,
+			pauseOnFocus: true,
+
+			adaptiveHeight: false, // 🔥 CRITICAL FIX
+
+			lazyLoad: 'ondemand',
+
+			responsive: [
+				{
+					breakpoint: 768,
+					settings: {
+						arrows: false
+					}
 				}
-			}
-		]
+			]
+		});
+	}
+
+	$('.js-testimonials-slider').on('setPosition', function () {
+		let maxHeight = 0;
+
+		$('.c-testimonials__card').each(function () {
+			const h = $(this).outerHeight();
+			if (h > maxHeight) maxHeight = h;
+		});
+
+		$('.c-testimonials__card').css('min-height', maxHeight);
 	});
+
 });

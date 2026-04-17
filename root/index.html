@@ -85,6 +85,14 @@
 
 			<!-- Visual -->
 			<div class="c-hero__visual">
+
+				<!-- Profile Image -->
+				<div class="c-hero__image-wrapper">
+					<img src="images/img_hero_01.png" alt="Profile" class="c-hero__image">
+					<div class="c-hero__image-glow"></div>
+				</div>
+
+				<!-- Stats Card -->
 				<div class="c-hero__card">
 					<p class="c-hero__badge">Available for new opportunities</p>
 					<ul class="c-hero__stats">
@@ -93,6 +101,7 @@
 						<li><strong>5+</strong> Years Experience</li>
 					</ul>
 				</div>
+
 			</div>
 		</div>
 	</section>
@@ -363,69 +372,20 @@
 	<!-- end c-projects -->
 
 	<!-- start c-process -->
-	<section class="c-process" id="process">
+<section class="c-process" id="process">
 	<div class="c-process__inner">
 
 		<h2 class="c-process__title">
-		From Idea to <span class="c-process__highlight">Execution</span>
+			From Idea to <span class="c-process__highlight">Execution</span>
 		</h2>
 
-		<div class="c-process__grid">
-
-			<!-- Card -->
-			<div class="c-process__card">
-				<span class="c-process__step">01</span>
-				<h3 class="c-process__card-title">Discovery & Planning</h3>
-				<p class="c-process__text">
-				Defining goals, requirements, and technical direction with clarity.
-				</p>
-			</div>
-
-			<div class="c-process__card">
-				<span class="c-process__step">02</span>
-				<h3 class="c-process__card-title">Wireframing</h3>
-				<p class="c-process__text">
-				Structuring user flow through low and high fidelity layouts.
-				</p>
-			</div>
-
-			<div class="c-process__card">
-				<span class="c-process__step">03</span>
-				<h3 class="c-process__card-title">Design & Prototype</h3>
-				<p class="c-process__text">
-				Creating intuitive and visually engaging interfaces.
-				</p>
-			</div>
-
-			<div class="c-process__card">
-				<span class="c-process__step">04</span>
-				<h3 class="c-process__card-title">Development</h3>
-				<p class="c-process__text">
-				Building scalable, optimized, and maintainable solutions.
-				</p>
-			</div>
-
-			<div class="c-process__card">
-				<span class="c-process__step">05</span>
-				<h3 class="c-process__card-title">QA & Testing</h3>
-				<p class="c-process__text">
-				Ensuring quality through testing, validation, and refinements.
-				</p>
-			</div>
-
-			<div class="c-process__card">
-				<span class="c-process__step">06</span>
-				<h3 class="c-process__card-title">Launch & Optimize</h3>
-				<p class="c-process__text">
-				Final optimization for performance, SEO, and deployment.
-				</p>
-			</div>
-
-			</div>
-
+		<div class="c-process__grid" id="js-process-grid">
+			<!-- Cards injected via JS -->
 		</div>
-	</section>
-	<!-- end c-process -->
+
+	</div>
+</section>
+<!-- end c-process -->
 
 	<!-- start c-performance -->
 	<section class="c-performance" id="performance">
@@ -504,57 +464,20 @@
 	<!-- end c-performance -->
 
 	<!-- start c-testimonials -->
-	<section class="c-testimonials" id="testimonials">
-	<div class="c-testimonials__inner">
+<section class="c-testimonials" id="testimonials">
+  <div class="c-testimonials__inner">
 
-		<h2 class="c-testimonials__title">
-			What Clients & Teams <span class="c-testimonials__highlight">Say</span>
-		</h2>
+    <h2 class="c-testimonials__title">
+      What Clients & Teams <span class="c-testimonials__highlight">Say</span>
+    </h2>
 
-		<div class="c-testimonials__slider js-testimonials-slider">
+    <div class="c-testimonials__slider js-testimonials-slider" id="js-testimonials-slider">
+      <!-- Cards injected via JS -->
+    </div>
 
-			<!-- Slide -->
-			<div class="c-testimonials__item">
-				<figure class="c-testimonials__card">
-
-					<blockquote class="c-testimonials__quote">
-						Delivered exceptional performance improvements and clean architecture. Highly reliable and detail-oriented.
-					</blockquote>
-					<figcaption class="c-testimonials__author">
-						<img src="https://dummyimage.com/80" alt="John Doe">
-						<div>
-							<strong>John Doe</strong>
-							<span>Project Manager</span>
-						</div>
-					</figcaption>
-					<div class="c-testimonials__rating">★★★★★</div>
-
-				</figure>
-			</div>
-
-			<!-- Slide -->
-			<div class="c-testimonials__item">
-				<figure class="c-testimonials__card">
-
-					<blockquote class="c-testimonials__quote">
-						A strong leader who balances technical excellence with clear communication.
-					</blockquote>
-					<figcaption class="c-testimonials__author">
-						<img src="https://dummyimage.com/80" alt="Jane Smith">
-						<div>
-							<strong>Jane Smith</strong>
-							<span>UX Lead</span>
-						</div>
-					</figcaption>
-					<div class="c-testimonials__rating">★★★★★</div>
-
-				</figure>
-			</div>
-
-		</div>
-	</div>
+  </div>
 </section>
-	<!-- end c-testimonials -->
+<!-- end c-testimonials -->
 
 	<!-- start c-faq -->
 <section class="c-faq" id="faq">
@@ -632,6 +555,30 @@
 					<div class="c-faq__answer">
 						<div class="c-faq__answer-inner">
 							Yes. I implement technical SEO, structured data, Core Web Vitals optimization, and performance improvements for better rankings and UX.
+						</div>
+					</div>
+				</div>
+
+				<div class="c-faq__item">
+					<button class="c-faq__question" aria-expanded="false">
+						How do you handle revisions and feedback?
+						<span class="c-faq__icon"></span>
+					</button>
+					<div class="c-faq__answer">
+						<div class="c-faq__answer-inner">
+							I follow an iterative workflow with structured feedback cycles. Revisions are handled efficiently through clear communication, ensuring alignment with your goals while maintaining project timelines.
+						</div>
+					</div>
+				</div>
+
+				<div class="c-faq__item">
+					<button class="c-faq__question" aria-expanded="false">
+						Will my website be scalable for future growth?
+						<span class="c-faq__icon"></span>
+					</button>
+					<div class="c-faq__answer">
+						<div class="c-faq__answer-inner">
+							Yes. I build with scalability in mind using modular architecture, clean code practices, and performance optimization to ensure your website can grow without requiring major rewrites.
 						</div>
 					</div>
 				</div>
@@ -767,5 +714,23 @@
 	<script src="js/slick/slick.min.js"></script>
 	<script src="js/slick/slick.js"></script>
 	<script src="js/index.js"></script>
+
+
+	<script type="application/ld+json">
+		{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"mainEntity": [
+			{
+			"@type": "Question",
+			"name": "How do you handle revisions and feedback?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "I follow an iterative workflow with structured feedback cycles..."
+			}
+			}
+		]
+		}
+	</script>
 </body>
 </html>

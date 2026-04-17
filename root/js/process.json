@@ -1,0 +1,32 @@
+[
+	{
+		"step": "01",
+		"title": "Discovery & Planning",
+		"description": "Defining goals, requirements, and technical direction with clarity."
+	},
+	{
+		"step": "02",
+		"title": "Wireframing",
+		"description": "Structuring user flow through low and high fidelity layouts."
+	},
+	{
+		"step": "03",
+		"title": "Design & Prototype",
+		"description": "Creating intuitive and visually engaging interfaces."
+	},
+	{
+		"step": "04",
+		"title": "Development",
+		"description": "Building scalable, optimized, and maintainable solutions."
+	},
+	{
+		"step": "05",
+		"title": "QA & Testing",
+		"description": "Ensuring quality through testing, validation, and refinements."
+	},
+	{
+		"step": "06",
+		"title": "Launch & Optimize",
+		"description": "Final optimization for performance, SEO, and deployment."
+	}
+]
