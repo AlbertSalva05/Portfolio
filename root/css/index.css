@@ -768,17 +768,24 @@ h2 {
 ========================= */
 @media (max-width: 900px) {
     .c-hero__bubble {
-        display: none; /* prevents overlap */
+        display: none; 
     }
 }
 
 @media (max-width: 768px) {
     .c-hero__bubble {
-        top: -20px;
+        top: 4px;
         right: 0;
-        max-width: 200px;
-        font-size: 13px;
+        max-width: 140px;
+        font-size: 12px;
+        left: -50px;
     }
+	.c-hero__bubble-static {
+		font-size: 13px;
+	}
+	.c-hero__bubble-text {
+		font-size: 11px;
+	}
 }
 
 /* =========================
