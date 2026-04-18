@@ -2,56 +2,56 @@
   {
     "name": "Ken Paril",
     "role": "Bridge Director",
-    "image": "https://dummyimage.com/80",
+    "image": "images/avatar_testimonial_01.png",
     "rating": 5,
     "review": "Demonstrates strong comprehension of instructions and consistently delivers accurate, timely reports. Highly approachable and supportive, often extending help to colleagues even while managing personal workload."
   },
   {
     "name": "Rachel Robles",
     "role": "Assistant Lead Developer",
-    "image": "https://dummyimage.com/80",
+    "image": "images/avatar_testimonial_02.png",
     "rating": 5,
     "review": "Clearly understands tasks and maintains a proactive, flexible approach in team collaboration. Highly approachable and consistently contributes positively to teamwork and mentorship."
   },
   {
     "name": "Jessa Faye Abulencia",
     "role": "Senior Lead Developer",
-    "image": "https://dummyimage.com/80",
+    "image": "images/avatar_testimonial_03.png",
     "rating": 5,
     "review": "Produces clear, detailed, and easy-to-understand reports while proactively raising and escalating concerns when needed. A reliable and supportive team leader who consistently assists team members across projects."
   },
   {
     "name": "Patrick Batungbacal",
     "role": "Senior Lead Developer",
-    "image": "https://dummyimage.com/80",
+    "image": "images/avatar_testimonial_04.png",
     "rating": 5,
     "review": "Exhibits excellent communication skills and sets a strong standard for professional interactions with teammates and stakeholders. Demonstrates strong leadership qualities, with opportunity to further strengthen authority in challenging situations."
   },
   {
     "name": "Joseph Anthony Carpio",
     "role": "Assistant Lead Developer",
-    "image": "https://dummyimage.com/80",
+    "image": "images/avatar_testimonial_05.png",
     "rating": 4,
     "review": "Communicates in an articulate and direct manner, ensuring clarity in all discussions. Recognized for being approachable and knowledgeable, contributing valuable insights to the team."
   },
   {
     "name": "Sheila Siongco",
     "role": "Bridge Director",
-    "image": "https://dummyimage.com/80",
+    "image": "images/avatar_testimonial_06.png",
     "rating": 4,
     "review": "Quickly understands instructions and communicates effectively when clarification is needed. Strong multitasking ability, consistently delivering quality work across multiple projects."
   },
   {
     "name": "Christian Alde",
     "role": "Senior Lead Developer",
-    "image": "https://dummyimage.com/80",
+    "image": "images/avatar_testimonial_07.png",
     "rating": 5,
     "review": "Maintains high-quality work across all aspects, especially in communication, ensuring smooth execution through proactive confirmation and suggestions. Highly organized, approachable, and diligent."
   },
   {
     "name": "David Isaac Dela Cruz",
     "role": "Assistant Lead Developer",
-    "image": "https://dummyimage.com/80",
+    "image": "images/avatar_testimonial_08.png",
     "rating": 5,
     "review": "Produces clear, precise, and high-quality coding and QA outputs, ensuring clean and reliable results. Known for being approachable, responsive, and detail-oriented, always striving for the best outcomes."
   }

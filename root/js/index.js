@@ -1,7 +1,5 @@
 // script starts here
 
-
-
 // NAVIGATION
 $(function() {
     const nav = $('.c-nav');
@@ -260,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    fetch('./js/skills.json', { cache: 'force-cache' }) // improves performance
+    fetch('./js/skills.json', { cache: 'force-cache' })
         .then(res => {
             if (!res.ok) throw new Error('Failed to load skills.json');
             return res.json();
@@ -473,26 +471,25 @@ document.addEventListener("DOMContentLoaded", () => {
 $(function() {
     const $btn = $('#js-scroll-top');
     const $about = $('#about');
-    const $hero = $('.c-hero'); // 👈 ADD HERO SECTION
+    const $hero = $('.c-hero');
     const $footer = $('.c-footer');
 
     let aboutStarted = false;
     let footerVisible = false;
-    let heroVisible = true; // default = hero is visible on page load
+    let heroVisible = true;
 
     /* =========================
 		UPDATE BUTTON STATE
-		PRIORITY: HERO > FOOTER > ABOUT
        ========================= */
     function updateButtonState() {
 
-        // 🔴 HIGHEST PRIORITY: HERO OVERRIDE (ALWAYS HIDE)
+        // HERO OVERRIDE (ALWAYS HIDE)
         if (heroVisible) {
             $btn.removeClass('is-visible is-in-footer');
             return;
         }
 
-        // ✔ ABOUT RULE
+        // ABOUT RULE
         if (aboutStarted) {
             $btn.addClass('is-visible');
         } else {
@@ -500,7 +497,7 @@ $(function() {
             return;
         }
 
-        // ✔ FOOTER RULE (kept intact)
+        // FOOTER RULE
         if (footerVisible) {
             $btn.addClass('is-in-footer');
         } else {
@@ -509,7 +506,7 @@ $(function() {
     }
 
     /* =========================
-       HERO OBSERVER (NEW)
+        HERO OBSERVER (NEW)
        ========================= */
     const heroObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -518,13 +515,13 @@ $(function() {
         });
     }, {
         threshold: 0.1,
-        rootMargin: "-500px 0px 0px 0px" // 👈 KEY FIX
+        rootMargin: "-500px 0px 0px 0px"
     });
 
     if ($hero.length) heroObserver.observe($hero[0]);
 
     /* =========================
-       ABOUT START DETECTION
+        ABOUT START DETECTION
        ========================= */
     const aboutObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -540,7 +537,7 @@ $(function() {
     if ($about.length) aboutObserver.observe($about[0]);
 
     /* =========================
-       FOOTER OBSERVER (UNCHANGED)
+        FOOTER OBSERVER
        ========================= */
     const footerObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -554,7 +551,7 @@ $(function() {
     if ($footer.length) footerObserver.observe($footer[0]);
 
     /* =========================
-       SCROLL TO TOP
+        SCROLL TO TOP
        ========================= */
     $btn.on('click', function() {
         window.scrollTo({
@@ -581,7 +578,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    fetch('./js/expertise2.json', { cache: 'force-cache' })
+    fetch('./js/expertise3.json', { cache: 'force-cache' })
         .then(res => {
             if (!res.ok) throw new Error('Failed to load expertise.json');
             return res.json();
@@ -765,14 +762,14 @@ document.addEventListener('DOMContentLoaded', function() {
             pauseOnHover: true,
             pauseOnFocus: true,
 
-            adaptiveHeight: false, // 🔥 CRITICAL FIX
+            adaptiveHeight: false,
 
             lazyLoad: 'ondemand',
 
             responsive: [{
                 breakpoint: 768,
                 settings: {
-                    arrows: false
+                    //arrows: false
                 }
             }]
         });
@@ -853,8 +850,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             <div class="c-projects__tags">${tags}</div>
                             <div class="c-projects__metrics">${metrics}</div>
                             <div class="c-projects__actions">
-                                <a href="${item.case || '#'}" class="c-btn c-btn--primary">View Case</a>
-                                <a href="${item.live || '#'}" class="c-btn c-btn--ghost">Live</a>
+                                <a href="${item.case || '#'}" class="c-btn c-btn--primary c-btn--view">View Case</a>
+                                <a href="${item.live || '#'}" class="c-btn c-btn--ghost c-btn--play">Live</a>
                             </div>
 
                         </div>
