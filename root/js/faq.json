@@ -1,0 +1,30 @@
+[
+    {
+        "question": "What technologies do you specialize in?",
+        "answer": "I specialize in HTML, CSS (SCSS), JavaScript, performance optimization, SEO, and scalable frontend architecture."
+    },
+    {
+        "question": "How do you ensure website performance?",
+        "answer": "I focus on Core Web Vitals, asset optimization, lazy loading, and minimizing render-blocking resources."
+    },
+    {
+        "question": "Do you handle end-to-end development?",
+        "answer": "Yes, I manage projects from planning and wireframing to development, QA, optimization, and deployment."
+    },
+    {
+        "question": "What is your development approach?",
+        "answer": "I follow a structured, modular, and performance-first approach with clean architecture and reusable components."
+    },
+    {
+        "question": "Do you optimize websites for SEO and performance?",
+        "answer": "Yes. I implement technical SEO, structured data, Core Web Vitals optimization, and performance improvements for better rankings and UX."
+    },
+    {
+        "question": "How do you handle revisions and feedback?",
+        "answer": "I follow an iterative workflow with structured feedback cycles. Revisions are handled efficiently through clear communication."
+    },
+    {
+        "question": "Will my website be scalable for future growth?",
+        "answer": "Yes. I build with scalability in mind using modular architecture, clean code practices, and performance optimization."
+    }
+]

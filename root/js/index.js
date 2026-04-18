@@ -189,88 +189,6 @@ statObserver.observe(document.querySelector('.c-about__stats'));
 
 
 
-
-// js-project-slider
-$(document).ready(function() {
-
-    const $slider = $('.js-project-slider');
-
-    /* =========================
-		EQUAL HEIGHT FUNCTION
-    ========================= */
-    function equalizeProjectDescriptions() {
-        let maxHeight = 0;
-        const $descs = $slider.find('.c-projects__desc');
-
-        // reset heights first
-        $descs.css('height', 'auto');
-
-        // get tallest
-        $descs.each(function() {
-            const h = $(this).outerHeight();
-            if (h > maxHeight) maxHeight = h;
-        });
-
-        // apply height
-        $descs.css('height', maxHeight + 'px');
-    }
-
-    /* =========================
-		SLICK INIT
-    ========================= */
-    $slider.on('init', function() {
-        equalizeProjectDescriptions();
-    });
-
-    $slider.on('setPosition', function() {
-        equalizeProjectDescriptions();
-    });
-
-    $slider.slick({
-        centerMode: true,
-        centerPadding: '60px',
-        slidesToShow: 3,
-        arrows: true,
-        dots: true,
-        speed: 700,
-        cssEase: 'cubic-bezier(0.22, 1, 0.36, 1)',
-        pauseOnHover: true,
-        adaptiveHeight: false,
-        responsive: [{
-                breakpoint: 768,
-                settings: {
-                    arrows: false,
-                    centerMode: true,
-                    centerPadding: '50px',
-                    slidesToShow: 3
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    arrows: false,
-                    centerMode: true,
-                    centerPadding: '50px',
-                    slidesToShow: 1
-                }
-            }
-        ]
-    });
-
-    /* =========================
-		RESIZE HANDLER (DEBOUNCED)
-    ========================= */
-    let resizeTimer;
-
-    $(window).on('resize', function() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function() {
-            equalizeProjectDescriptions();
-        }, 200);
-    });
-
-});
-
 // Modal trigger
 document.querySelectorAll('.js-open-modal').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -331,6 +249,69 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('[Process JSON Error]', err);
         });
 
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('js-skills-grid');
+
+    if (!grid) {
+        console.error('[Skills] Grid not found');
+        return;
+    }
+
+    fetch('./js/skills.json', { cache: 'force-cache' }) // improves performance
+        .then(res => {
+            if (!res.ok) throw new Error('Failed to load skills.json');
+            return res.json();
+        })
+        .then(data => {
+
+            if (!Array.isArray(data) || data.length === 0) {
+                console.warn('[Skills] No data found');
+                return;
+            }
+
+            const fragment = document.createDocumentFragment();
+
+            data.forEach((item, index) => {
+
+                // Basic validation (prevents runtime issues)
+                if (!item.icon || !item.label) return;
+
+                const li = document.createElement('li');
+                li.className = 'c-about__skill-card';
+
+                li.innerHTML = `
+                    <div class="c-about__icon">
+                        <img 
+                            src="${item.icon}" 
+                            alt="${item.label}" 
+                            loading="lazy" 
+                            width="40" 
+                            height="40"
+                        >
+                    </div>
+                    <span>${item.label}</span>
+                `;
+
+                fragment.appendChild(li);
+
+                // stagger animation (GPU-friendly)
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        li.classList.add('is-visible');
+                    }, index * 80);
+                });
+            });
+
+            // Avoid multiple reflows
+            grid.innerHTML = '';
+            grid.appendChild(fragment);
+        })
+        .catch(err => {
+            console.error('[Skills JSON Error]', err);
+        });
 });
 
 
@@ -584,7 +565,8 @@ $(function() {
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
+//expertise
+document.addEventListener('DOMContentLoaded', function () {
 
     const grid = document.getElementById('js-expertise-grid');
     const modalExpertise = document.getElementById('js-expertise-modal');
@@ -599,70 +581,95 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    // Load JSON
-    fetch('./js/expertise.json')
+    fetch('./js/expertise2.json', { cache: 'force-cache' })
         .then(res => {
-            if (!res.ok) throw new Error('Failed to load JSON');
+            if (!res.ok) throw new Error('Failed to load expertise.json');
             return res.json();
         })
         .then(data => {
 
-            grid.innerHTML = '';
+            if (!Array.isArray(data) || data.length === 0) {
+                console.warn('[Expertise] No data found');
+                return;
+            }
+
+            const fragment = document.createDocumentFragment();
 
             data.forEach((item, index) => {
+
+                if (!item.icon || !item.title || !item.description) return;
 
                 const card = document.createElement('div');
                 card.className = 'c-expertise__card';
 
                 card.innerHTML = `
-					<div class="c-expertise__icon">${item.icon}</div>
-					<h3 class="c-expertise__card-title">${item.title}</h3>
-				`;
+                    <div class="c-expertise__icon">
+                        <img 
+                            src="${item.icon}" 
+                            alt="${item.title}" 
+                            loading="lazy"
+                            width="48"
+                            height="48"
+                        >
+                    </div>
+                    <h3 class="c-expertise__card-title">${item.title}</h3>
+                `;
 
+                // Modal click
                 card.addEventListener('click', () => {
 
-                    // Inject modal content
-                    modalIcon.textContent = item.icon;
+                    modalIcon.innerHTML = `
+                        <img 
+                            src="${item.icon}" 
+                            alt="${item.title}" 
+                            width="56" 
+                            height="56"
+                        >
+                    `;
+
                     modalTitle.textContent = item.title;
                     modalText.textContent = item.description;
 
-                    // Open modal
                     modalExpertise.classList.add('is-active');
                     document.body.style.overflow = 'hidden';
                 });
 
-                grid.appendChild(card);
+                fragment.appendChild(card);
 
                 requestAnimationFrame(() => {
                     setTimeout(() => {
                         card.classList.add('is-visible');
-                    }, index * 90);
+                    }, index * 80);
                 });
             });
+
+            grid.innerHTML = '';
+            grid.appendChild(fragment);
         })
         .catch(err => {
             console.error('[Expertise JSON Error]', err);
         });
 
-    // Close modal
+    // CLOSE MODAL
     function closeModal() {
         modalExpertise.classList.remove('is-active');
         document.body.style.overflow = '';
     }
 
-    modalClose.addEventListener('click', closeModal);
+    modalClose?.addEventListener('click', closeModal);
 
-    modalExpertise.addEventListener('click', (e) => {
+    modalExpertise?.addEventListener('click', (e) => {
         if (e.target === modalExpertise) closeModal();
     });
 
     window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();
     });
+
 });
 
 
-
+//testimonials
 document.addEventListener('DOMContentLoaded', function() {
 
     const slider = document.getElementById('js-testimonials-slider');
@@ -793,4 +800,226 @@ window.addEventListener('scroll', () => {
         formWrap.style.opacity = 1;
         formWrap.style.transform = 'translateY(0)';
     }
+});
+
+
+
+// projects
+document.addEventListener('DOMContentLoaded', function () {
+
+    const slider = document.querySelector('.js-project-slider');
+
+    if (!slider) {
+        console.error('[Projects] Slider not found');
+        return;
+    }
+
+    console.log('[Projects] Script started');
+
+    fetch('./js/projects.json')
+        .then(res => {
+            if (!res.ok) throw new Error('Failed to load projects.json');
+            return res.json();
+        })
+        .then(data => {
+
+            console.log('[Projects] Data loaded:', data.length);
+
+            slider.innerHTML = '';
+
+            data.forEach((item, index) => {
+
+                const tags = (item.tags || []).map(t => `<span>${t}</span>`).join('');
+                const metrics = (item.metrics || []).map(m => `<span>${m}</span>`).join('');
+
+                const card = document.createElement('div');
+                card.className = 'c-projects__item';
+
+                card.innerHTML = `
+                    <div class="c-projects__card">
+
+                        <img
+                            src="${item.image}"
+                            alt="${item.title}"
+                            class="c-projects__image"
+                            loading="lazy"
+                            decoding="async"
+                        >
+
+                        <div class="c-projects__content">
+
+                            <h3 class="c-projects__name">${item.title}</h3>
+                            <p class="c-projects__desc">${item.description || ''}</p>
+                            <div class="c-projects__tags">${tags}</div>
+                            <div class="c-projects__metrics">${metrics}</div>
+                            <div class="c-projects__actions">
+                                <a href="${item.case || '#'}" class="c-btn c-btn--primary">View Case</a>
+                                <a href="${item.live || '#'}" class="c-btn c-btn--ghost">Live</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                `;
+
+                slider.appendChild(card);
+
+                setTimeout(() => {
+                    card.classList.add('is-visible');
+                }, index * 80);
+            });
+
+            console.log('[Projects] DOM injected');
+            initProjectSlider();
+
+        })
+        .catch(err => {
+            console.error('[Projects ERROR]', err);
+        });
+
+
+    function initProjectSlider() {
+
+        const $slider = $('.js-project-slider');
+
+        if (!$slider.length) {
+            console.error('[Slick] Slider not found in jQuery');
+            return;
+        }
+
+        if (typeof $.fn.slick !== 'function') {
+            console.error('[Slick] Slick not loaded');
+            return;
+        }
+
+        if ($slider.hasClass('slick-initialized')) {
+            $slider.slick('unslick');
+        }
+
+        $slider.slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            arrows: true,
+            dots: true,
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            speed: 600,
+            cssEase: 'cubic-bezier(.22,.61,.36,1)',
+            adaptiveHeight: false,
+
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: { slidesToShow: 2 }
+                },
+                {
+                    breakpoint: 768,
+                    settings: { slidesToShow: 1 }
+                }
+            ]
+        });
+
+        console.log('[Projects] Slick initialized successfully');
+    }
+
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const accordion = document.getElementById('js-faq-accordion');
+
+    if (!accordion) {
+        console.error('[FAQ] Accordion not found');
+        return;
+    }
+
+    fetch('./js/faq.json', { cache: 'force-cache' })
+        .then(res => {
+            if (!res.ok) throw new Error('Failed to load faq.json');
+            return res.json();
+        })
+        .then(data => {
+
+            if (!Array.isArray(data) || data.length === 0) {
+                console.warn('[FAQ] No data found');
+                return;
+            }
+
+            const fragment = document.createDocumentFragment();
+
+            data.forEach((item, index) => {
+
+                if (!item.question || !item.answer) return;
+
+                const div = document.createElement('div');
+                div.className = 'c-faq__item';
+
+                div.innerHTML = `
+                    <button class="c-faq__question" aria-expanded="false">
+                        ${item.question}
+                        <span class="c-faq__icon"></span>
+                    </button>
+
+                    <div class="c-faq__answer">
+                        <div class="c-faq__answer-inner">
+                            ${item.answer}
+                        </div>
+                    </div>
+                `;
+
+                fragment.appendChild(div);
+
+                // optional stagger animation
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        div.classList.add('is-visible');
+                    }, index * 70);
+                });
+            });
+
+            accordion.innerHTML = '';
+            accordion.appendChild(fragment);
+
+            console.log('[FAQ] Rendered successfully');
+
+            initFaqAccordion();
+
+        })
+        .catch(err => {
+            console.error('[FAQ JSON Error]', err);
+        });
+
+
+    // Accordion behavior (lightweight + accessible)
+    function initFaqAccordion() {
+
+        const items = document.querySelectorAll('.c-faq__item');
+
+        items.forEach(item => {
+
+            const button = item.querySelector('.c-faq__question');
+
+            button.addEventListener('click', () => {
+
+                const isOpen = item.classList.contains('is-open');
+
+                // close all
+                items.forEach(i => {
+                    i.classList.remove('is-open');
+                    i.querySelector('.c-faq__question')
+                        .setAttribute('aria-expanded', 'false');
+                });
+
+                // open current if not already open
+                if (!isOpen) {
+                    item.classList.add('is-open');
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    }
+
 });

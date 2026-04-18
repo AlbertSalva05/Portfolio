@@ -1,0 +1,47 @@
+[
+	{
+		"image": "https://dummyimage.com/1080x350",
+		"title": "E-commerce Platform",
+		"description": "Optimized performance and improved SEO visibility for a high-traffic platform.",
+		"tags": ["HTML", "CSS", "JS"],
+		"metrics": ["⚡ +45% Speed", "📈 +30% SEO"],
+		"live": "#",
+		"case": "#"
+	},
+	{
+		"image": "https://dummyimage.com/1080x350",
+		"title": "Landing Page System",
+		"description": "High-converting landing pages with optimized UX.",
+		"tags": ["SEO", "UX", "Performance"],
+		"metrics": ["🚀 +50% Conversion"],
+		"live": "#",
+		"case": "#"
+	},
+	{
+		"image": "https://dummyimage.com/1080x350",
+		"title": "Corporate Website",
+		"description": "Modern redesign focused on clarity and conversions.",
+		"tags": ["UI", "UX", "Branding"],
+		"metrics": ["📊 +60% Engagement"],
+		"live": "#",
+		"case": "#"
+	},
+	{
+		"image": "https://dummyimage.com/1080x350",
+		"title": "Performance Optimization Suite",
+		"description": "Improved Core Web Vitals and reduced load time across enterprise pages.",
+		"tags": ["Performance", "Core Web Vitals", "Optimization"],
+		"metrics": ["⚡ -60% Load Time", "📊 95+ PageSpeed"],
+		"live": "#",
+		"case": "#"
+	},
+	{
+		"image": "https://dummyimage.com/1080x350",
+		"title": "Quality Assurance & Testing",
+		"description": "Ensured application stability through rigorous testing and debugging.",
+		"tags": ["QA", "Testing", "Bug Fixing"],
+		"metrics": ["🐞 -80% Bugs", "✅ 99% Stability"],
+		"live": "#",
+		"case": "#"
+	}
+]

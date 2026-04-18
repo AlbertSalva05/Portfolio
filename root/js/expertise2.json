@@ -1,31 +1,31 @@
 [
 	{
-		"icon": "💻",
+		"icon": "images/ico_expertise_web.svg",
 		"title": "Web Development",
 		"description": "Building scalable, maintainable, and high-performance applications with modern best practices."
 	},
 	{
-		"icon": "🎨",
+		"icon": "images/ico_expertise_design.svg",
 		"title": "UI/UX Design",
 		"description": "Designing intuitive interfaces that balance usability and visual appeal."
 	},
 	{
-		"icon": "🚀",
+		"icon": "images/ico_expertise_seo.svg",
 		"title": "SEO Optimization",
 		"description": "Improving visibility and performance using technical SEO and Core Web Vitals."
 	},
 	{
-		"icon": "🧪",
+		"icon": "images/ico_expertise_qa.svg",
 		"title": "Quality Assurance",
 		"description": "Ensuring reliability through structured testing and debugging strategies."
 	},
 	{
-		"icon": "🧩",
+		"icon": "images/ico_expertise_wireframe.svg",
 		"title": "Wireframing",
 		"description": "Creating low and high fidelity wireframes for structured user flows."
 	},
 	{
-		"icon": "📊",
+		"icon": "images/ico_expertise_management.svg",
 		"title": "Project Management",
 		"description": "Leading teams and delivering projects efficiently with agile workflows."
 	}

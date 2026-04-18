@@ -1,0 +1,22 @@
+[
+	{
+		"icon": "images/ico_about_web.svg",
+		"label": "Web Development"
+	},
+	{
+		"icon": "images/ico_about_seo.svg",
+		"label": "SEO Optimization"
+	},
+	{
+		"icon": "images/ico_about_qa.svg",
+		"label": "Quality Assurance"
+	},
+	{
+		"icon": "images/ico_about_wireframe.svg",
+		"label": "Wireframing"
+	},
+	{
+		"icon": "images/ico_about_leadership.svg",
+		"label": "Team Leadership"
+	}
+]
