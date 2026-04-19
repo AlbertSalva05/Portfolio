@@ -4,7 +4,7 @@
 $(function() {
     const nav = $('.c-nav');
 
-    $('.c-nav__menu-list a[href^="#"]').on('click', function(e) {
+    $('.c-nav__menu-list a[href^="#"], .c-hero__scroll').on('click', function(e) {
 
         const target = $($(this).attr('href'));
         if (!target.length) return;
