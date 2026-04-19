@@ -851,7 +851,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             <div class="c-projects__metrics">${metrics}</div>
                             <div class="c-projects__actions">
                                 <a href="${item.case || '#'}" class="c-btn c-btn--primary c-btn--view">View Case</a>
-                                <a href="${item.live || '#'}" class="c-btn c-btn--ghost c-btn--play">Live</a>
+                                <a href="${item.live || '#'}" class="c-btn c-btn--ghost c-btn--play" target="_blank">Live</a>
                             </div>
 
                         </div>

@@ -1,47 +1,47 @@
 [
 	{
-		"image": "https://dummyimage.com/1080x350",
-		"title": "E-commerce Platform",
-		"description": "Optimized performance and improved SEO visibility for a high-traffic platform.",
+		"image": "images/img_project_01.jpg",
+		"title": "Revamping Mass pro pages and Landing pages",
+		"description": "Redesigned and optimized multiple high-traffic pages to improve UI consistency, performance, and user experience across devices.",
 		"tags": ["HTML", "CSS", "JS"],
 		"metrics": ["⚡ +45% Speed", "📈 +30% SEO"],
-		"live": "#",
+		"live": "https://www.iwatani.co.jp/jpn/hydrogenfuelcellship/",
 		"case": "#"
 	},
 	{
-		"image": "https://dummyimage.com/1080x350",
-		"title": "Landing Page System",
-		"description": "High-converting landing pages with optimized UX.",
+		"image": "images/img_project_02.jpg",
+		"title": "Landing Page Systems",
+		"description": "Built a scalable landing page system with reusable components for faster deployment, consistency, and conversion-focused design.",
 		"tags": ["SEO", "UX", "Performance"],
 		"metrics": ["🚀 +50% Conversion"],
-		"live": "#",
+		"live": "https://www.smbc.co.jp/hojin/sonota/factoring/Amulet/",
 		"case": "#"
 	},
 	{
-		"image": "https://dummyimage.com/1080x350",
+		"image": "images/img_project_03.jpg",
 		"title": "Corporate Website",
-		"description": "Modern redesign focused on clarity and conversions.",
+		"description": "Developed a responsive, SEO-optimized corporate website aligned with brand identity and modern UX standards.",
 		"tags": ["UI", "UX", "Branding"],
 		"metrics": ["📊 +60% Engagement"],
-		"live": "#",
+		"live": "https://www.trans-cosmos.co.jp/di/",
 		"case": "#"
 	},
 	{
-		"image": "https://dummyimage.com/1080x350",
-		"title": "Performance Optimization Suite",
-		"description": "Improved Core Web Vitals and reduced load time across enterprise pages.",
+		"image": "images/img_project_04.jpg",
+		"title": "Redesigning Pages with Animations",
+		"description": "Enhanced existing pages with smooth, performance-friendly animations and modern UI improvements to boost engagement.",
 		"tags": ["Performance", "Core Web Vitals", "Optimization"],
 		"metrics": ["⚡ -60% Load Time", "📊 95+ PageSpeed"],
-		"live": "#",
+		"live": "https://www.asahiinryo.co.jp/entertainment/metaverse_factory/",
 		"case": "#"
 	},
 	{
-		"image": "https://dummyimage.com/1080x350",
-		"title": "Quality Assurance & Testing",
-		"description": "Ensured application stability through rigorous testing and debugging.",
-		"tags": ["QA", "Testing", "Bug Fixing"],
+		"image": "images/img_project_05.jpg",
+		"title": "Page redevelopment and Quality Assurance",
+		"description": "Rebuilt legacy pages with improved structure, performance optimization, and thorough cross-browser quality testing.",
+		"tags": ["QA", "Optimization", "Bug Fixing"],
 		"metrics": ["🐞 -80% Bugs", "✅ 99% Stability"],
-		"live": "#",
+		"live": "https://www.meiji.co.jp/products/brand/global/choco/ja/meltykiss/",
 		"case": "#"
 	}
 ]
