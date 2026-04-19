@@ -2418,18 +2418,7 @@ h2 {
     }
 }
 
-/* TABLET STYLES */
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-    .c-projects {
-        padding: 80px 60px;
-    }
-    .c-projects__actions a:nth-child(2) {
-        margin-top: 20px;
-    }
-}
-
-/* DESKTOP STYLES */
-@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
     .c-projects {
         padding: 80px 60px;
     }
@@ -2449,6 +2438,7 @@ h2 {
         margin-left: 0;
     }
 }
+
 
 
 
@@ -4080,7 +4070,6 @@ select.c-contact__input option {
 
 .c-footer {
     position: relative;
-    /* overflow: hidden; */
     padding: 80px 20px 30px;
     background: -webkit-gradient(linear, left top, left bottom, from(#020617), to(#050a18));
     background: -o-linear-gradient(top, #020617, #050a18);
@@ -4088,8 +4077,9 @@ select.c-contact__input option {
     color: #cbd5f5;
 }
 
-
-/* ========================= c-footer__top-btn ========================= */
+/* =========================
+    c-footer__top-btn
+========================= */
 .c-footer__top-btn {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -4097,7 +4087,7 @@ select.c-contact__input option {
     position: fixed;
     right: 24px;
     bottom: 24px;
-    z-index: 9999;
+    z-index: 99;
     width: 44px;
     height: 44px;
     border: none;
@@ -4141,7 +4131,6 @@ select.c-contact__input option {
     right: 20px;
     bottom: auto;
 }
-
 .c-footer__bottom {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -4178,7 +4167,6 @@ select.c-contact__input option {
     position: relative;
     z-index: 2;
 }
-
 .c-footer__top {
     display: -ms-grid;
     display: grid;
@@ -4187,11 +4175,9 @@ select.c-contact__input option {
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
 }
-
 .c-footer__col--divider {
     position: relative;
 }
-
 .c-footer__col--divider::before {
     position: absolute;
     top: -5%;
@@ -4209,11 +4195,9 @@ select.c-contact__input option {
     max-width: 60px;
     margin-bottom: 10px;
 }
-
 .c-footer__logo img {
     width: 100%;
 }
-
 .c-footer__desc {
     color: #94a3b8;
     line-height: 1.6;
@@ -4231,11 +4215,9 @@ select.c-contact__input option {
     padding: 0;
     list-style: none;
 }
-
 .c-footer__list li {
     margin-bottom: 10px;
 }
-
 .c-footer__list a {
     display: inline-block;
     color: #cbd5f5;
@@ -4243,17 +4225,17 @@ select.c-contact__input option {
     -o-transition: 0.3s ease;
     transition: 0.3s ease;
 }
-
 .c-footer__list a:hover {
     color: #38bdf8;
     -webkit-transform: translateX(4px);
         -ms-transform: translateX(4px);
             transform: translateX(4px);
 }
-/* =========================
-    SOCIAL ICON BASE
-========================= */
 
+
+/* =========================
+    c-footer__social
+========================= */
 .c-footer__social {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -4291,9 +4273,8 @@ select.c-contact__input option {
 }
 
 /* =========================
-    GLOW EFFECT (SEPARATE LAYER)
+    GLOW EFFECT
 ========================= */
-
 .c-footer__social a::before {
     position: absolute;
     z-index: -1;
@@ -4328,7 +4309,7 @@ select.c-contact__input option {
 .c-footer__social a:nth-child(5):hover::before { background: rgba(34,197,94,0.5); }
 
 /* =========================
-    TOOLTIP (FIXED)
+    TOOLTIP
 ========================= */
 
 /* tooltip text */
@@ -4338,17 +4319,13 @@ select.c-contact__input option {
     left: 50%;
     z-index: 10;
     padding: 6px 10px;
-
     border: 1px solid rgba(56, 189, 248, 0.2);
     border-radius: 8px;
-
     background: rgba(2, 6, 23, 0.95);
     color: #cbd5f5;
-
     font-size: 12px;
     white-space: nowrap;
     content: attr(data-tooltip);
-
     opacity: 0;
     -webkit-transform: translateX(-50%) translateY(8px);
         -ms-transform: translateX(-50%) translateY(8px);
@@ -4374,7 +4351,6 @@ select.c-contact__input option {
 /* =========================
     HOVER ANIMATION
 ========================= */
-
 .c-footer__social a:hover {
     -webkit-transform: translateY(-5px) scale(1.08);
         -ms-transform: translateY(-5px) scale(1.08);
@@ -4410,16 +4386,17 @@ select.c-contact__input option {
 }
 
 
-
 @media (max-width: 900px) {
     .c-footer__top {
         -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
     }
+    }
     .c-footer__col--divider::before {
         display: none;
     }
 }
+
 @media (max-width: 600px) {
     .c-footer__top {
         -ms-grid-columns: 1fr;
