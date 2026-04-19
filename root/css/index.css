@@ -904,13 +904,17 @@ h2 {
         margin-left: 0;
     }
     .c-hero__image-wrapper {
-        max-width: 360px;
+        max-width: 350px;
     }
     .c-hero__bubble-static {
         font-size: var(--fs-12) !important;
     }
     .c-hero__bubble-text {
         font-size: var(--fs-10) !important;
+    }
+    .c-hero__inner {
+        -ms-grid-columns: 1fr 1.5fr;
+        grid-template-columns: 1fr 1.5fr;
     }
 }
 
@@ -1309,9 +1313,9 @@ h2 {
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
     .c-hero__bubble {
-        top: 42px;
+        top: 40px;
         right: 0;
-        left: -60px;
+        left: -56px;
         max-width: 190px;
         font-size: var(--fs-12);
     }
