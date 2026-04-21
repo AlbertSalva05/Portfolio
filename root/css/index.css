@@ -167,6 +167,12 @@ h2 {
     color: var(--white);
     text-decoration: none;
     text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+/* Active state */
+.c-nav__link.is-active {
+    color: #ddd; /* adjust to your theme */
 }
 
 .c-nav__link::after {
@@ -187,7 +193,8 @@ h2 {
     transition: width 0.3s ease;
 }
 
-.c-nav__link:hover::after {
+.c-nav__link:hover::after,
+.c-nav__link.is-active::after {
     width: 100%;
     background-origin: border-box;
     background-clip: padding-box, border-box;
@@ -225,7 +232,6 @@ h2 {
         -webkit-transform 0.3s ease;
 }
 
-/* Default positions (hamburger) */
 .c-nav__toggle span:nth-child(1) {
     top: 0;
 }

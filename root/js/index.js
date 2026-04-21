@@ -1,68 +1,100 @@
 // script starts here
 
-// NAVIGATION
-$(function() {
-    const nav = $('.c-nav');
+/* =========================
+    NAVIGATION + SMOOTH SCROLL
+========================= */
 
-    $('.c-nav__menu-list a[href^="#"], .c-hero__scroll').on('click', function(e) {
+document.addEventListener("DOMContentLoaded", () => {
+    const nav = document.getElementById("js-nav");
+    const menu = document.getElementById("js-menu");
+    const toggle = document.getElementById("js-toggle");
+    const links = document.querySelectorAll(".c-nav__link");
 
-        const target = $($(this).attr('href'));
-        if (!target.length) return;
-        e.preventDefault();
-
-        const navHeight = nav.outerHeight();
-        const position = target.offset().top - navHeight;
-
-        // Smooth scroll to target section
-        $('html, body').animate({
-            scrollTop: position
-        }, 300);
-    });
-});
-
-
-// MOBILE MENU
-const toggle = document.getElementById("js-toggle");
-const menu = document.getElementById("js-menu");
-const nav = document.getElementById("js-nav");
-
-function setMenuState(isOpen) {
-    menu.classList.toggle("is-active", isOpen);
-    toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-}
-
-toggle.addEventListener("click", () => {
-    const isOpen = menu.classList.contains("is-active");
-    setMenuState(!isOpen);
-});
-
-/* Smooth scroll + close menu safely */
-document.querySelectorAll(".c-nav__link").forEach((link) => {
-    link.addEventListener("click", (e) => {
-        const targetId = link.getAttribute("href");
-        const target = document.querySelector(targetId);
-
-        if (!target) return;
-        e.preventDefault();
-
-        target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-        setMenuState(false);
-    });
-});
-
-/* ESC to close */
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-        setMenuState(false);
+    /* =========================
+        MENU STATE
+    ========================= */
+    function setMenuState(isOpen) {
+        menu.classList.toggle("is-active", isOpen);
+        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     }
+
+    toggle.addEventListener("click", () => {
+        const isOpen = menu.classList.contains("is-active");
+        setMenuState(!isOpen);
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            setMenuState(false);
+        }
+    });
+
+    /* =========================
+        SMOOTH SCROLL
+    ========================= */
+    links.forEach((link) => {
+        link.addEventListener("click", (e) => {
+            const targetId = link.getAttribute("href");
+            const target = document.querySelector(targetId);
+
+            if (!target) return;
+
+            e.preventDefault();
+
+            const navHeight = nav.offsetHeight;
+            const targetPosition =
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
+                navHeight;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth",
+            });
+
+            setMenuState(false);
+        });
+    });
+
+    /* =========================
+        SMOOTH SCROLL
+    ========================= */
+
+    const sections = [...links]
+        .map((link) => document.querySelector(link.getAttribute("href")))
+        .filter(Boolean);
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute("id");
+
+                    links.forEach((link) => {
+                        link.classList.toggle(
+                            "is-active",
+                            link.getAttribute("href") === `#${id}`
+                        );
+                    });
+                }
+            });
+        },
+        {
+            root: null,
+            rootMargin: `-${nav.offsetHeight + 20}px 0px -60% 0px`,
+            threshold: 0.1,
+        }
+    );
+
+    sections.forEach((section) => {
+        observer.observe(section);
+    });
 });
 
 
-// c-hero animation
+/* =========================
+    HERO SECTION
+========================= */
 document.addEventListener("DOMContentLoaded", () => {
     const hero = document.querySelector(".c-hero");
 
@@ -107,7 +139,9 @@ and an aspiring Web Designer`;
     type();
 });
 
-// Observe sections
+/* =========================
+    OBSERVE SECTION
+========================= */
 document.addEventListener("DOMContentLoaded", () => {
 
     const observer = new IntersectionObserver(
@@ -134,7 +168,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// observerAbout
+/* =========================
+    ABOUT SECTION
+========================= */
 document.addEventListener("DOMContentLoaded", () => {
 
 	const aboutSection = document.querySelector('.c-about');
@@ -195,7 +231,9 @@ document.querySelectorAll('.js-open-modal').forEach(btn => {
 });
 
 
-// fetch and render process
+/* =========================
+    PROCESS SECTION
+========================= */
 document.addEventListener('DOMContentLoaded', () => {
 
     const grid = document.getElementById('js-process-grid');
@@ -249,7 +287,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-
+/* =========================
+    SKILLS SECTION
+========================= */
 document.addEventListener('DOMContentLoaded', () => {
     const grid = document.getElementById('js-skills-grid');
 
@@ -313,7 +353,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-//processObserver
+/* =========================
+    PROCESS SECTION
+========================= */
 document.addEventListener("DOMContentLoaded", () => {
 
 	const processCards = document.querySelectorAll('.c-process__card');
@@ -335,7 +377,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-//observerPerf
+/* =========================
+    PERFORMANCE SECTION
+========================= */
 document.addEventListener("DOMContentLoaded", () => {
 
 	const section = document.querySelector('.c-performance');
@@ -399,7 +443,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// FAQ accordion
+/* =========================
+    FAQ SECTION
+========================= */
 document.addEventListener("DOMContentLoaded", () => {
 	const faqItems = document.querySelectorAll('.c-faq__item');
 
@@ -425,7 +471,108 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// contact
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const accordion = document.getElementById('js-faq-accordion');
+
+    if (!accordion) {
+        console.error('[FAQ] Accordion not found');
+        return;
+    }
+
+    fetch('./js/faq.json', { cache: 'force-cache' })
+        .then(res => {
+            if (!res.ok) throw new Error('Failed to load faq.json');
+            return res.json();
+        })
+        .then(data => {
+
+            if (!Array.isArray(data) || data.length === 0) {
+                console.warn('[FAQ] No data found');
+                return;
+            }
+
+            const fragment = document.createDocumentFragment();
+
+            data.forEach((item, index) => {
+
+                if (!item.question || !item.answer) return;
+
+                const div = document.createElement('div');
+                div.className = 'c-faq__item';
+
+                div.innerHTML = `
+                    <button class="c-faq__question" aria-expanded="false">
+                        ${item.question}
+                        <span class="c-faq__icon"></span>
+                    </button>
+
+                    <div class="c-faq__answer">
+                        <div class="c-faq__answer-inner">
+                            ${item.answer}
+                        </div>
+                    </div>
+                `;
+
+                fragment.appendChild(div);
+
+                // optional stagger animation
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        div.classList.add('is-visible');
+                    }, index * 70);
+                });
+            });
+
+            accordion.innerHTML = '';
+            accordion.appendChild(fragment);
+
+            console.log('[FAQ] Rendered successfully');
+
+            initFaqAccordion();
+
+        })
+        .catch(err => {
+            console.error('[FAQ JSON Error]', err);
+        });
+
+
+    // Accordion behavior (lightweight + accessible)
+    function initFaqAccordion() {
+
+        const items = document.querySelectorAll('.c-faq__item');
+
+        items.forEach(item => {
+
+            const button = item.querySelector('.c-faq__question');
+
+            button.addEventListener('click', () => {
+
+                const isOpen = item.classList.contains('is-open');
+
+                // close all
+                items.forEach(i => {
+                    i.classList.remove('is-open');
+                    i.querySelector('.c-faq__question')
+                        .setAttribute('aria-expanded', 'false');
+                });
+
+                // open current if not already open
+                if (!isOpen) {
+                    item.classList.add('is-open');
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    }
+
+});
+
+
+/* =========================
+    CONTACT SECTION
+========================= */
 document.addEventListener("DOMContentLoaded", () => {
 
 	const form = document.getElementById('js-contact-form');
@@ -468,6 +615,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+
+const formWrap = document.querySelector('.c-contact__form-wrap');
+
+window.addEventListener('scroll', () => {
+    const rect = formWrap.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+        formWrap.style.opacity = 1;
+        formWrap.style.transform = 'translateY(0)';
+    }
+});
+
+
+/* =========================
+    PAGE TO TOP BUTTON
+========================= */
 $(function() {
     const $btn = $('#js-scroll-top');
     const $about = $('#about');
@@ -562,7 +724,9 @@ $(function() {
 });
 
 
-//expertise
+/* =========================
+    EXPERTISE SECTION
+========================= */
 document.addEventListener('DOMContentLoaded', function () {
 
     const grid = document.getElementById('js-expertise-grid');
@@ -666,7 +830,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-//testimonials
+/* =========================
+    TESTIMONIALS SECTION
+========================= */
 document.addEventListener('DOMContentLoaded', function() {
 
     const slider = document.getElementById('js-testimonials-slider');
@@ -789,19 +955,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-const formWrap = document.querySelector('.c-contact__form-wrap');
-
-window.addEventListener('scroll', () => {
-    const rect = formWrap.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) {
-        formWrap.style.opacity = 1;
-        formWrap.style.transform = 'translateY(0)';
-    }
-});
 
 
 
-// projects
+/* =========================
+    PROJECT SECTION
+========================= */
 document.addEventListener('DOMContentLoaded', function () {
 
     const slider = document.querySelector('.js-project-slider');
@@ -924,99 +1083,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-document.addEventListener('DOMContentLoaded', () => {
+/* =========================
+    CV DOWNLOAD
+========================= */
 
-    const accordion = document.getElementById('js-faq-accordion');
+document.addEventListener("DOMContentLoaded", () => {
+    const downloadBtn = document.querySelector(".c-btn--download");
 
-    if (!accordion) {
-        console.error('[FAQ] Accordion not found');
-        return;
-    }
+    if (!downloadBtn) return;
 
-    fetch('./js/faq.json', { cache: 'force-cache' })
-        .then(res => {
-            if (!res.ok) throw new Error('Failed to load faq.json');
-            return res.json();
-        })
-        .then(data => {
+    downloadBtn.addEventListener("click", (e) => {
+        const url = downloadBtn.getAttribute("href");
 
-            if (!Array.isArray(data) || data.length === 0) {
-                console.warn('[FAQ] No data found');
-                return;
-            }
+        if (!url || url === "#") return;
 
-            const fragment = document.createDocumentFragment();
-
-            data.forEach((item, index) => {
-
-                if (!item.question || !item.answer) return;
-
-                const div = document.createElement('div');
-                div.className = 'c-faq__item';
-
-                div.innerHTML = `
-                    <button class="c-faq__question" aria-expanded="false">
-                        ${item.question}
-                        <span class="c-faq__icon"></span>
-                    </button>
-
-                    <div class="c-faq__answer">
-                        <div class="c-faq__answer-inner">
-                            ${item.answer}
-                        </div>
-                    </div>
-                `;
-
-                fragment.appendChild(div);
-
-                // optional stagger animation
-                requestAnimationFrame(() => {
-                    setTimeout(() => {
-                        div.classList.add('is-visible');
-                    }, index * 70);
-                });
+        if (typeof gtag === "function") {
+            gtag("event", "download_cv", {
+                event_category: "engagement",
+                event_label: "CV Download",
+                value: 1,
             });
+        }
 
-            accordion.innerHTML = '';
-            accordion.appendChild(fragment);
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-            console.log('[FAQ] Rendered successfully');
+        if (isSafari) {
+            e.preventDefault();
 
-            initFaqAccordion();
+            fetch(url)
+                .then((res) => res.blob())
+                .then((blob) => {
+                    const blobUrl = window.URL.createObjectURL(blob);
+                    const tempLink = document.createElement("a");
 
-        })
-        .catch(err => {
-            console.error('[FAQ JSON Error]', err);
-        });
+                    tempLink.href = blobUrl;
+                    tempLink.download = "James_Albert_Salva_CV.pdf";
+                    document.body.appendChild(tempLink);
+                    tempLink.click();
 
-
-    // Accordion behavior (lightweight + accessible)
-    function initFaqAccordion() {
-
-        const items = document.querySelectorAll('.c-faq__item');
-
-        items.forEach(item => {
-
-            const button = item.querySelector('.c-faq__question');
-
-            button.addEventListener('click', () => {
-
-                const isOpen = item.classList.contains('is-open');
-
-                // close all
-                items.forEach(i => {
-                    i.classList.remove('is-open');
-                    i.querySelector('.c-faq__question')
-                        .setAttribute('aria-expanded', 'false');
+                    tempLink.remove();
+                    window.URL.revokeObjectURL(blobUrl);
+                })
+                .catch(() => {
+                    window.location.href = url;
                 });
-
-                // open current if not already open
-                if (!isOpen) {
-                    item.classList.add('is-open');
-                    button.setAttribute('aria-expanded', 'true');
-                }
-            });
-        });
-    }
-
+        }
+    });
 });
