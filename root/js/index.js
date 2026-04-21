@@ -377,6 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
 /* =========================
     PERFORMANCE SECTION
 ========================= */
@@ -829,6 +830,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+
+/* =========================
+   SKILL BAR ANIMATION
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const skills = document.querySelectorAll(".c-skill");
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+
+            const el = entry.target;
+            const progress = el.querySelector(".c-skill__progress");
+            const value = el.getAttribute("data-skill");
+
+            requestAnimationFrame(() => {
+                progress.style.width = value + "%";
+            });
+
+            obs.unobserve(el); // run once
+        });
+    }, {
+        threshold: 0.3
+    });
+
+    skills.forEach(skill => observer.observe(skill));
+});
 
 /* =========================
     TESTIMONIALS SECTION
