@@ -217,6 +217,7 @@ img {
 .c-case__meta-txt a {
     color: var(--white);
     font-size: 14px;
+    margin: 10px 0 0;
 }
 
 .c-case__meta-label {
