@@ -2715,6 +2715,17 @@ h2 {
     height: 44px;
 }
 
+
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus
+{
+    color: var(--primary);
+    outline: none;
+    background: var(--primary);
+}
+
 .c-projects__card {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2871,6 +2882,7 @@ h2 {
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
     .c-projects {
         padding: 80px 60px;
+        margin: 0 50px !important;
     }
     .c-projects__actions {
         display: -webkit-box;
@@ -2886,6 +2898,12 @@ h2 {
     .c-projects__actions a:nth-child(2) {
         margin-top: 20px;
         margin-left: 0;
+    }
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1400px) {
+    .c-projects {
+        margin: 0 30px !important;
     }
 }
 
@@ -3788,11 +3806,11 @@ h2 {
 
 .slick-prev,
 .slick-next {
-    z-index: 2;
+    z-index: 10;
     border-radius: 50%;
     background: rgba(30, 41, 59, 0.7);
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
+    /* -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px); */
 }
 
 .slick-prev:hover,

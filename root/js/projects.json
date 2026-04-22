@@ -6,7 +6,7 @@
 		"tags": ["HTML", "CSS", "JS"],
 		"metrics": ["⚡ +45% Speed", "📈 +30% SEO"],
 		"live": "https://www.iwatani.co.jp/jpn/hydrogenfuelcellship/",
-		"case": "#"
+		"case": "/casestudy/case_01.html"
 	},
 	{
 		"image": "images/img_project_02.jpg",
@@ -15,7 +15,7 @@
 		"tags": ["SEO", "UX", "Performance"],
 		"metrics": ["🚀 +50% Conversion"],
 		"live": "https://www.smbc.co.jp/hojin/sonota/factoring/Amulet/",
-		"case": "#"
+		"case": "/casestudy/case_02.html"
 	},
 	{
 		"image": "images/img_project_03.jpg",
@@ -24,7 +24,7 @@
 		"tags": ["UI", "UX", "Branding"],
 		"metrics": ["📊 +60% Engagement"],
 		"live": "https://www.trans-cosmos.co.jp/di/",
-		"case": "#"
+		"case": "/casestudy/case_03.html"
 	},
 	{
 		"image": "images/img_project_04.jpg",
@@ -33,7 +33,7 @@
 		"tags": ["Performance", "Core Web Vitals", "Optimization"],
 		"metrics": ["⚡ -60% Load Time", "📊 95+ PageSpeed"],
 		"live": "https://www.asahiinryo.co.jp/entertainment/metaverse_factory/",
-		"case": "#"
+		"case": "/casestudy/case_04.html"
 	},
 	{
 		"image": "images/img_project_05.jpg",
@@ -42,6 +42,6 @@
 		"tags": ["QA", "Optimization", "Bug Fixing"],
 		"metrics": ["🐞 -80% Bugs", "✅ 99% Stability"],
 		"live": "https://www.meiji.co.jp/products/brand/global/choco/ja/meltykiss/",
-		"case": "#"
+		"case": "/casestudy/case_05.html"
 	}
 ]

@@ -1,0 +1,32 @@
+[
+	{
+		"icon": "images/ico_expertise_web.svg",
+		"title": "Code review",
+		"description": "I perform in-depth code reviews and refactoring to improve code quality, performance, and maintainability. This includes identifying inefficient patterns, eliminating technical debt, optimizing structure, and ensuring adherence to best practices in modern web development. The goal is to deliver clean, scalable, and production-ready code that is easier to maintain, debug, and extend—without altering core functionality. \n\n These also includes: \n ● UI Refractor \n ● Component restructuring\n ● BEM / scalable architecture"
+	},
+	{
+		"icon": "images/ico_expertise_design.svg",
+		"title": "UI/UX Design",
+		"description": "I design intuitive and visually engaging user interfaces that prioritize usability and accessibility. Every design decision is driven by user behavior, ensuring seamless experiences that balance aesthetics with functionality. \n\n These also includes: \n ● UI architecture \n ● Responsive design \n ● Standardize UI system"
+	},
+	{
+		"icon": "images/ico_expertise_seo.svg",
+		"title": "Page Optimization",
+		"description": "I improve website visibility through technical SEO, structured data, and performance optimization strategies. By focusing on Core Web Vitals and search best practices, I help drive organic traffic and long-term growth. \n\n These also includes: \n ● Image compression \n ● Lazy loading \n ● CSS cleanup"
+	},
+	{
+		"icon": "images/ico_expertise_qa.svg",
+		"title": "Quality Checking",
+		"description": "I ensure application reliability through systematic testing, debugging, and validation across different devices and browsers. My process minimizes bugs and guarantees a stable, consistent user experience. \n\n These also includes: \n ● Semantic HTML implementation \n ● Setting Good Meta structure \n ● Checking of links"
+	},
+	{
+		"icon": "images/ico_expertise_wireframe.svg",
+		"title": "Wireframing",
+		"description": "I create structured wireframes and prototypes that map out user flows and interface behavior. This helps align stakeholders early in the process and reduces development risks through clear visual planning. \n\n These also includes: \n ● Make scalable component structure \n ● UI consistency \n ● Grid system used"
+	},
+	{
+		"icon": "images/ico_expertise_management.svg",
+		"title": "Project Management",
+		"description": "I lead projects using agile methodologies, ensuring efficient collaboration and timely delivery. With a focus on clear communication and structured workflows, I keep teams aligned and projects on track from start to finish. \n\n These also includes: \n ● Project delegation \n ● Time management \n ● Providing detailed reports"
+	}
+]

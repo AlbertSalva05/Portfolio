@@ -743,9 +743,13 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    fetch('./js/expertise3.json', { cache: 'force-cache' })
+    function formatDescription(text) {
+        return text.replace(/\n/g, '<br>');
+    }
+
+    fetch('./js/expertise9.json', { cache: 'force-cache' })
         .then(res => {
-            if (!res.ok) throw new Error('Failed to load expertise.json');
+            if (!res.ok) throw new Error('Failed to load expertise5.json');
             return res.json();
         })
         .then(data => {
@@ -790,7 +794,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     `;
 
                     modalTitle.textContent = item.title;
-                    modalText.textContent = item.description;
+                    modalText.innerHTML = formatDescription(item.description);
 
                     modalExpertise.classList.add('is-active');
                     document.body.style.overflow = 'hidden';
