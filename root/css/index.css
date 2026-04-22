@@ -87,13 +87,7 @@ h2 {
 
 .highlight {
     background: -o-linear-gradient(left, #0ea5e9, var(--secondary));
-    background: -webkit-gradient(
-        linear,
-        left top,
-        right top,
-        from(#0ea5e9),
-        to(var(--secondary))
-    );
+    background: -webkit-gradient(linear, left top, right top, from(#0ea5e9), to(var(--secondary)));
     background: linear-gradient(90deg, #0ea5e9, var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -167,6 +161,8 @@ h2 {
     color: var(--white);
     text-decoration: none;
     text-transform: uppercase;
+    -webkit-transition: color 0.3s ease;
+    -o-transition: color 0.3s ease;
     transition: color 0.3s ease;
 }
 
@@ -184,8 +180,8 @@ h2 {
     border: 1px solid transparent;
     border-radius: 8px;
     background: transparent;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(var(--bg-dark)), to(var(--bg-dark))), var(--gradient-border);
     background-image: -o-linear-gradient(var(--bg-dark), var(--bg-dark)), var(--gradient-border);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(var(--bg-dark)), to(var(--bg-dark))), var(--gradient-border);
     background-image: linear-gradient(var(--bg-dark), var(--bg-dark)), var(--gradient-border);
     content: "";
     -webkit-transition: width 0.3s ease;
@@ -225,7 +221,9 @@ h2 {
     -o-transition: transform 0.3s ease, opacity 0.2s ease, top 0.3s ease;
     -webkit-transition: opacity 0.2s ease, top 0.3s ease,
         -webkit-transform 0.3s ease;
+    -webkit-transition: opacity 0.2s ease, top 0.3s ease, -webkit-transform 0.3s ease;
     transition: transform 0.3s ease, opacity 0.2s ease, top 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.2s ease, top 0.3s ease, -webkit-transform 0.3s ease;
     transition: transform 0.3s ease, opacity 0.2s ease, top 0.3s ease,
         -webkit-transform 0.3s ease;
     transition: transform 0.3s ease, opacity 0.2s ease, top 0.3s ease,
@@ -366,6 +364,18 @@ h2 {
         ),
         -o-radial-gradient(80% 70%, circle, rgba(139, 92, 246, 0.15), transparent
                     40%);
+    background: -o-radial-gradient(
+            20% 30%,
+            circle,
+            rgba(56, 189, 248, 0.15),
+            transparent 40%
+        ),
+        -o-radial-gradient(
+            80% 70%,
+            circle,
+            rgba(139, 92, 246, 0.15),
+            transparent 40%
+        );
     background: radial-gradient(
             circle at 20% 30%,
             rgba(56, 189, 248, 0.15),
@@ -518,7 +528,11 @@ h2 {
 
     -o-transition: transform 0.25s ease, box-shadow 0.25s ease;
 
+    -webkit-transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
 
     transition: transform 0.25s ease, box-shadow 0.25s ease,
         -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
@@ -547,6 +561,7 @@ h2 {
     transition: opacity 0.25s ease, -webkit-transform 0.25s ease;
     -o-transition: transform 0.25s ease, opacity 0.25s ease;
     transition: transform 0.25s ease, opacity 0.25s ease;
+    transition: transform 0.25s ease, opacity 0.25s ease, -webkit-transform 0.25s ease;
     transition: transform 0.25s ease, opacity 0.25s ease,
         -webkit-transform 0.25s ease;
 
@@ -571,7 +586,9 @@ h2 {
         -webkit-transform 0.25s ease;
     transition: background-position 0.5s ease, -webkit-transform 0.25s ease;
     -o-transition: background-position 0.5s ease, transform 0.25s ease;
+    -webkit-transition: background-position 0.5s ease, -webkit-transform 0.25s ease;
     transition: background-position 0.5s ease, transform 0.25s ease;
+    transition: background-position 0.5s ease, transform 0.25s ease, -webkit-transform 0.25s ease;
     transition: background-position 0.5s ease, transform 0.25s ease,
         -webkit-transform 0.25s ease;
 }
@@ -624,15 +641,9 @@ h2 {
     border: 2px solid transparent;
     border-radius: 8px;
     background: transparent;
-    background-image: -webkit-gradient(
-            linear,
-            left top,
-            left bottom,
-            from(var(--bg-dark)),
-            to(var(--bg-dark))
-        ),
-        var(--gradient-border);
     background-image: -o-linear-gradient(var(--bg-dark), var(--bg-dark)),
+        var(--gradient-border);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(var(--bg-dark)), to(var(--bg-dark))),
         var(--gradient-border);
     background-image: linear-gradient(var(--bg-dark), var(--bg-dark)),
         var(--gradient-border);
@@ -643,6 +654,7 @@ h2 {
     transition: color 0.25s ease, -webkit-transform 0.25s ease;
     -o-transition: transform 0.25s ease, color 0.25s ease;
     transition: transform 0.25s ease, color 0.25s ease;
+    transition: transform 0.25s ease, color 0.25s ease, -webkit-transform 0.25s ease;
     transition: transform 0.25s ease, color 0.25s ease,
         -webkit-transform 0.25s ease;
 }
@@ -655,6 +667,92 @@ h2 {
     -ms-transform: translateY(-2px);
 
     transform: translateY(-2px);
+}
+
+#expertise .c-btn--view {
+    margin: 0 auto;
+    min-height: 60px;
+    padding: 15px 50px 12px 35px;
+}
+
+/* ACTIVE STATE (Show Less) */
+#expertise .c-btn--view.is-active::after {
+    background: url("../images/ico_arrow_up.svg") no-repeat center / contain;
+    -webkit-filter: invert(100%);
+            filter: invert(100%);
+    top: 50%;
+}
+
+
+/* =========================
+   ATTENTION PULSE ANIMATION
+========================= */
+
+.c--btn--my-skills {
+    will-change: transform;
+    -webkit-box-shadow: var(--shadow-md);
+    box-shadow: 0 10px 40px rgb(80 106 208 / 28%);
+}
+
+/* Active pulse state */
+.c--btn--my-skills.is-pulsing {
+    -webkit-animation: btnPulse 1.8s ease-in-out infinite;
+            animation: btnPulse 1.8s ease-in-out infinite;
+}
+
+/* Smooth breathing effect */
+@-webkit-keyframes btnPulse {
+    0% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+    50% {
+        -webkit-transform: scale(1.08);
+                transform: scale(1.08);
+    }
+    100% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+}
+@keyframes btnPulse {
+    0% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+    50% {
+        -webkit-transform: scale(1.08);
+                transform: scale(1.08);
+    }
+    100% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+}
+
+/* =========================
+   STOP ANIMATION ON INTERACTION
+========================= */
+
+.c--btn--my-skills:hover,
+.c--btn--my-skills:focus,
+.c--btn--my-skills.is-active {
+    -webkit-animation: none;
+            animation: none;
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
+}
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .c--btn--my-skills {
+        -webkit-animation: none !important;
+                animation: none !important;
+    }
 }
 
 /* =========================
@@ -1487,14 +1585,7 @@ h2 {
         transparent
     );
     background: -o-linear-gradient(top, transparent, #4facfe, transparent);
-    background: -webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        from(transparent),
-        color-stop(#4facfe),
-        to(transparent)
-    );
+    background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(#4facfe), to(transparent));
     background: linear-gradient(to bottom, transparent, #4facfe, transparent);
     content: "";
 }
@@ -1752,6 +1843,18 @@ h2 {
         ),
         -o-radial-gradient(80% 70%, circle, rgba(139, 92, 246, 0.2), transparent
                     45%);
+    background: -o-radial-gradient(
+            20% 30%,
+            circle,
+            rgba(56, 189, 248, 0.3),
+            transparent 40%
+        ),
+        -o-radial-gradient(
+            80% 70%,
+            circle,
+            rgba(139, 92, 246, 0.2),
+            transparent 45%
+        );
     background: radial-gradient(
             circle at 20% 30%,
             rgba(56, 189, 248, 0.3),
@@ -2087,6 +2190,14 @@ h2 {
     color: var(--primary);
 }
 
+.c-expertise__btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 50px 0 0;
+
+}
+
 .c-expertise__grid {
     display: -ms-grid;
     display: grid;
@@ -2344,6 +2455,7 @@ h2 {
 }
 
 .c-skills__grid {
+    display: -ms-grid;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(179px, 1fr));
     gap: 20px;
@@ -2357,10 +2469,18 @@ h2 {
     padding: 18px;
     border-radius: 16px;
 
+    background: -o-linear-gradient(305deg, rgba(20,30,60,0.65), rgba(10,15,30,0.95));
+
     background: linear-gradient(145deg, rgba(20,30,60,0.65), rgba(10,15,30,0.95));
     border: 1px solid rgba(255,255,255,0.08);
 
-    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+            backdrop-filter: blur(12px);
+
+    -webkit-transition: all 0.35s ease;
+
+    -o-transition: all 0.35s ease;
 
     transition: all 0.35s ease;
     overflow: hidden;
@@ -2373,7 +2493,11 @@ h2 {
     inset: 0;
     border-radius: inherit;
     padding: 1px;
+    background: -o-linear-gradient(330deg, var(--c1), var(--c2));
     background: linear-gradient(120deg, var(--c1), var(--c2));
+    -webkit-mask:
+        -webkit-gradient(linear, left top, left bottom, color-stop(0, #000)) content-box,
+        -webkit-gradient(linear, left top, left bottom, color-stop(0, #000));
     -webkit-mask:
         linear-gradient(#000 0 0) content-box,
         linear-gradient(#000 0 0);
@@ -2384,8 +2508,11 @@ h2 {
 
 /* HOVER */
 .c-skill:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.45);
+    -webkit-transform: translateY(-6px);
+        -ms-transform: translateY(-6px);
+            transform: translateY(-6px);
+    -webkit-box-shadow: 0 15px 40px rgba(0,0,0,0.45);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.45);
 }
 
 .c-skills__title {
@@ -2398,8 +2525,12 @@ h2 {
    HEADER
 ========================= */
 .c-skill__header {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     gap: 12px;
     margin-bottom: 12px;
 }
@@ -2408,9 +2539,11 @@ h2 {
 .c-skill__icon {
     width: 65px;
     height: 50px;
+    display: -ms-grid;
     display: grid;
     place-items: center;
     border-radius: 10px;
+    background: -o-linear-gradient(315deg, var(--c1), var(--c2));
     background: linear-gradient(135deg, var(--c1), var(--c2));
     padding: 5px;
 }
@@ -2422,8 +2555,12 @@ h2 {
 
 /* INFO */
 .c-skill__info {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     width: 100%;
 }
 
@@ -2453,7 +2590,13 @@ h2 {
     width: 0;
     border-radius: inherit;
 
+    background: -webkit-gradient(linear, left top, right top, from(var(--c1)), to(var(--c2)));
+
+    background: -o-linear-gradient(left, var(--c1), var(--c2));
+
     background: linear-gradient(90deg, var(--c1), var(--c2));
+    -webkit-transition: width 1.2s cubic-bezier(.22,.61,.36,1);
+    -o-transition: width 1.2s cubic-bezier(.22,.61,.36,1);
     transition: width 1.2s cubic-bezier(.22,.61,.36,1);
 }
 
@@ -2484,12 +2627,14 @@ h2 {
 
 
 .c-skill--adalo .c-skill__icon img  {
-    filter: brightness(1) invert(0); 
+    -webkit-filter: brightness(1) invert(0);
+            filter: brightness(1) invert(0); 
 }
 .c-skill__icon img {
     width: 22px;
     height: 22px;
-    filter: brightness(0) invert(1); /* makes it white */
+    -webkit-filter: brightness(0) invert(1);
+            filter: brightness(0) invert(1); /* makes it white */
 }
 
 /* =========================
@@ -2593,7 +2738,9 @@ h2 {
     -o-transition: transform 0.4s ease, box-shadow 0.4s ease;
     -webkit-transition: -webkit-transform 0.4s ease,
         -webkit-box-shadow 0.4s ease;
+    -webkit-transition: -webkit-transform 0.4s ease, -webkit-box-shadow 0.4s ease;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, -webkit-transform 0.4s ease, -webkit-box-shadow 0.4s ease;
     transition: transform 0.4s ease, box-shadow 0.4s ease,
         -webkit-transform 0.4s ease, -webkit-box-shadow 0.4s ease;
     transition: transform 0.4s ease, box-shadow 0.4s ease,
@@ -2914,6 +3061,7 @@ h2 {
         transparent,
         rgba(56, 189, 248, 0.18)
     );
+    background: -o-linear-gradient(330deg, transparent, rgba(56, 189, 248, 0.18));
     background: linear-gradient(120deg, transparent, rgba(56, 189, 248, 0.18));
     content: "";
     opacity: 0;
@@ -3065,6 +3213,25 @@ h2 {
         -o-radial-gradient(50% 90%, circle, rgba(16, 185, 129, 0.1), transparent
                     55%);
 
+    background: -o-radial-gradient(
+            20% 20%,
+            circle,
+            rgba(56, 189, 248, 0.18),
+            transparent 45%
+        ),
+        -o-radial-gradient(
+            80% 60%,
+            circle,
+            rgba(99, 102, 241, 0.14),
+            transparent 50%
+        ),
+        -o-radial-gradient(
+            50% 90%,
+            circle,
+            rgba(16, 185, 129, 0.1),
+            transparent 55%
+        );
+
     background: radial-gradient(
             circle at 20% 20%,
             rgba(56, 189, 248, 0.18),
@@ -3152,7 +3319,9 @@ h2 {
     -o-transition: transform 0.3s ease, box-shadow 0.3s ease;
     -webkit-transition: -webkit-transform 0.3s ease,
         -webkit-box-shadow 0.3s ease;
+    -webkit-transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
     transition: transform 0.3s ease, box-shadow 0.3s ease,
         -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
     transition: transform 0.3s ease, box-shadow 0.3s ease,
@@ -3218,13 +3387,7 @@ h2 {
     height: 100%;
     border-radius: 999px;
     background: -o-linear-gradient(left, #0ea5e9, var(--secondary));
-    background: -webkit-gradient(
-        linear,
-        left top,
-        right top,
-        from(#0ea5e9),
-        to(var(--secondary))
-    );
+    background: -webkit-gradient(linear, left top, right top, from(#0ea5e9), to(var(--secondary)));
     background: linear-gradient(90deg, #0ea5e9, var(--secondary));
     -webkit-transition: width 1.4s cubic-bezier(0.25, 1, 0.5, 1);
     -o-transition: width 1.4s cubic-bezier(0.25, 1, 0.5, 1);
@@ -3319,7 +3482,9 @@ h2 {
     -o-transition: transform 0.4s ease, box-shadow 0.4s ease;
     -webkit-transition: -webkit-transform 0.4s ease,
         -webkit-box-shadow 0.4s ease;
+    -webkit-transition: -webkit-transform 0.4s ease, -webkit-box-shadow 0.4s ease;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, -webkit-transform 0.4s ease, -webkit-box-shadow 0.4s ease;
     transition: transform 0.4s ease, box-shadow 0.4s ease,
         -webkit-transform 0.4s ease, -webkit-box-shadow 0.4s ease;
     transition: transform 0.4s ease, box-shadow 0.4s ease,
@@ -3860,8 +4025,15 @@ h2 {
     -o-transition: transform 0.25s ease, box-shadow 0.25s ease,
         border-color 0.25s ease;
 
+    -webkit-transition: border-color 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+
+    transition: border-color 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+
     transition: transform 0.25s ease, box-shadow 0.25s ease,
         border-color 0.25s ease;
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease,
+        border-color 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
 
     transition: transform 0.25s ease, box-shadow 0.25s ease,
         border-color 0.25s ease, -webkit-transform 0.25s ease,
@@ -3907,6 +4079,8 @@ h2 {
         padding-left 0.3s ease;
 
     -o-transition: background 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
+
+    -webkit-transition: background 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
 
     transition: background 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
 }
@@ -4332,13 +4506,7 @@ select.c-contact__input option {
     border: none;
     border-radius: 8px;
     background: -o-linear-gradient(left, #0ea5e9, var(--secondary));
-    background: -webkit-gradient(
-        linear,
-        left top,
-        right top,
-        from(#0ea5e9),
-        to(var(--secondary))
-    );
+    background: -webkit-gradient(linear, left top, right top, from(#0ea5e9), to(var(--secondary)));
     background: linear-gradient(90deg, #0ea5e9, var(--secondary));
     font-weight: 600;
     cursor: pointer;
@@ -4509,13 +4677,7 @@ select.c-contact__input option {
     position: relative;
     padding: 80px 20px 30px;
     background: -o-linear-gradient(top, #020617, #050a18);
-    background: -webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        from(#020617),
-        to(#050a18)
-    );
+    background: -webkit-gradient(linear, left top, left bottom, from(#020617), to(#050a18));
     background: linear-gradient(180deg, #020617, #050a18);
     color: #cbd5f5;
 }
@@ -4603,6 +4765,18 @@ select.c-contact__input option {
         ),
         -o-radial-gradient(80% 60%, circle, rgba(139, 92, 246, 0.08), transparent
                     55%);
+    background: -o-radial-gradient(
+            20% 20%,
+            circle,
+            rgba(56, 189, 248, 0.1),
+            transparent 50%
+        ),
+        -o-radial-gradient(
+            80% 60%,
+            circle,
+            rgba(139, 92, 246, 0.08),
+            transparent 55%
+        );
     background: radial-gradient(
             circle at 20% 20%,
             rgba(56, 189, 248, 0.1),
@@ -4648,8 +4822,7 @@ select.c-contact__input option {
     );
     background: -webkit-gradient(
         linear,
-        left top,
-        left bottom,
+        left top, left bottom,
         from(transparent),
         color-stop(rgba(148, 163, 184, 0.4)),
         to(transparent)

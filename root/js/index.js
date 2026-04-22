@@ -832,7 +832,139 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 /* =========================
-   SKILL BAR ANIMATION
+    TECH STACK
+========================= */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const grid = document.getElementById('js-tech-stack-grid');
+    const btn = document.querySelector('.c--btn--my-skills');
+
+    if (!grid) return;
+
+    const DATA_URL = './js/tech_stack.json';
+    const VISIBLE_COUNT = 5;
+    let isExpanded = false;
+
+    fetch(DATA_URL)
+        .then(res => {
+            if (!res.ok) throw new Error('Failed to load tech_stack.json');
+            return res.json();
+        })
+        .then(data => {
+
+            const fragment = document.createDocumentFragment();
+
+            data.forEach((item, index) => {
+
+                const card = document.createElement('div');
+                card.className = `c-skill ${item.class || ''}`;
+                card.setAttribute('data-skill', item.percent);
+
+                card.innerHTML = `
+                    <div class="c-skill__header">
+                        <div class="c-skill__icon">
+                            <img src="${item.icon}" alt="${item.name}">
+                        </div>
+                        <div class="c-skill__info">
+                            <span class="c-skill__name">${item.name}</span>
+                            <span class="c-skill__percent">${item.percent}%</span>
+                        </div>
+                    </div>
+                    <div class="c-skill__bar">
+                        <span class="c-skill__progress"></span>
+                    </div>
+                `;
+
+                // ✅ FIX: completely remove from layout
+                if (index >= VISIBLE_COUNT) {
+                    card.style.display = 'none';
+                }
+
+                fragment.appendChild(card);
+
+                // existing animation
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        card.classList.add('is-visible');
+
+                        const bar = card.querySelector('.c-skill__progress');
+                        if (bar) bar.style.width = item.percent + '%';
+
+                    }, index * 90);
+                });
+            });
+
+            grid.innerHTML = '';
+            grid.appendChild(fragment);
+
+            const cards = grid.querySelectorAll('.c-skill');
+
+            // =========================
+            // TOGGLE WITH SMOOTH ENTRY
+            // =========================
+            btn?.addEventListener('click', () => {
+
+                isExpanded = !isExpanded;
+
+                const cards = grid.querySelectorAll('.c-skill');
+
+                cards.forEach((card, index) => {
+
+                    if (index < VISIBLE_COUNT) return;
+
+                    if (isExpanded) {
+                        // SHOW
+                        card.style.display = 'block';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(10px)';
+
+                        requestAnimationFrame(() => {
+                            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        });
+
+                    } else {
+                        // HIDE
+                        card.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(10px)';
+
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 250);
+                    }
+                });
+
+                // =========================
+                // FIXED PULSE RESET (NO DELAY)
+                // =========================
+
+                if (isExpanded) {
+                    btn.textContent = 'Show Less';
+                    btn.classList.remove('is-pulsing');
+
+                } else {
+                    btn.textContent = 'View more';
+
+                    // 🔥 CRITICAL FIX: force reflow before re-adding animation
+                    btn.classList.remove('is-pulsing');
+                    void btn.offsetWidth; // force reflow
+                    btn.classList.add('is-pulsing');
+                }
+
+            });
+
+        })
+        .catch(err => {
+            console.error('[Skills JSON Error]', err);
+        });
+
+});
+
+/* =========================
+    SKILL BAR ANIMATION
 ========================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1159,3 +1291,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+

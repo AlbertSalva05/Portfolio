@@ -1,0 +1,122 @@
+[
+    {
+        "name": "HTML5",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/html5.svg",
+        "percent": 95,
+        "class": "c-skill--html"
+    },
+    {
+        "name": "CSS3 / SCSS",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/css3.svg",
+        "percent": 90,
+        "class": "c-skill--css"
+    },
+    {
+        "name": "JavaScript",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/javascript.svg",
+        "percent": 85,
+        "class": "c-skill--js"
+    },
+    {
+        "name": "jQuery",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/jquery.svg",
+        "percent": 80,
+        "class": "c-skill--js"
+    },
+    {
+        "name": "Git",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/git.svg",
+        "percent": 70,
+        "class": "c-skill--git"
+    },
+    {
+        "name": "PHP",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/php.svg",
+        "percent": 80,
+        "class": "c-skill--php"
+    },
+    {
+        "name": "C#",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/csharp.svg",
+        "percent": 70,
+        "class": "c-skill--csharp"
+    },
+    {
+        "name": "ASP .Net",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/dotnet.svg",
+        "percent": 70,
+        "class": "c-skill--asp"
+    },
+    {
+        "name": "Microsoft Office",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoft.svg",
+        "percent": 85,
+        "class": "c-skill--office"
+    },
+    {
+        "name": "Adobe PS",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/adobephotoshop.svg",
+        "percent": 70,
+        "class": "c-skill--ps"
+    },
+    {
+        "name": "Adobe XD",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/adobexd.svg",
+        "percent": 85,
+        "class": "c-skill--xd"
+    },
+    {
+        "name": "Figma",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/figma.svg",
+        "percent": 70,
+        "class": "c-skill--figma"
+    },
+    {
+        "name": "Framer",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/framer.svg",
+        "percent": 40,
+        "class": "c-skill--framer"
+    },
+    {
+        "name": "Webflow",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/webflow.svg",
+        "percent": 60,
+        "class": "c-skill--webflow"
+    },
+    {
+        "name": "Adalo",
+        "icon": "https://www.adalo.com/favicon.png",
+        "percent": 60,
+        "class": "c-skill--adalo"
+    },
+    {
+        "name": "RWD",
+        "icon": "https://cdn.jsdelivr.net/npm/heroicons@2.1.5/24/outline/computer-desktop.svg",
+        "percent": 90,
+        "class": "c-skill--rwd"
+    },
+    {
+        "name": "Bootstrap",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/bootstrap.svg",
+        "percent": 85,
+        "class": "c-skill--bootstrap"
+    },
+    {
+        "name": "Netlify",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/netlify.svg",
+        "percent": 50,
+        "class": "c-skill--netlify"
+    },
+    {
+        "name": "ChatGPT",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/openai.svg",
+        "percent": 50,
+        "class": "c-skill--chatgpt"
+    },
+    {
+        "name": "ClickUp",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/clickup.svg",
+        "percent": 85,
+        "class": "c-skill--chatgpt"
+    }
+]
