@@ -626,6 +626,13 @@ h2 {
     background-image: url("../images/ico_play.svg");
 }
 
+.c-btn--send::after {
+    background-image: url("../images/ico_arrow_left.svg");
+    -webkit-transform: translateY(-50%) rotate(180deg);
+        -ms-transform: translateY(-50%) rotate(180deg);
+            transform: translateY(-50%) rotate(180deg);
+}
+
 .c-btn--back::after {
     background-image: url("../images/ico_arrow_left.svg");
     left: 16px;
@@ -2599,9 +2606,9 @@ h2 {
     width: 0;
     border-radius: inherit;
 
-    background: -webkit-gradient(linear, left top, right top, from(var(--c1)), to(var(--c2)));
-
     background: -o-linear-gradient(left, var(--c1), var(--c2));
+
+    background: -webkit-gradient(linear, left top, right top, from(var(--c1)), to(var(--c2)));
 
     background: linear-gradient(90deg, var(--c1), var(--c2));
     -webkit-transition: width 1.2s cubic-bezier(.22,.61,.36,1);
