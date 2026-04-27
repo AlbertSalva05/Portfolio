@@ -307,6 +307,11 @@ img {
     margin: 10px 0 0;
 }
 
+.c-btn--back {
+    margin: 10px 0 0;
+    padding: 12px 22px 12px 42px;
+}
+
 .c--btn--view-website.is-pulsing {
     -webkit-animation: btnPulse 1.8s ease-in-out infinite;
     animation: btnPulse 1.8s ease-in-out infinite;

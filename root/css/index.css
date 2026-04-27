@@ -602,8 +602,12 @@ h2 {
     box-shadow: 0 14px 40px rgba(124, 58, 237, 0.35);
 }
 
+.c-btn--back {
+    margin-left: 0;
+}
+
 /* =========================
-   ICON VARIANTS
+    ICON VARIANTS
 ========================= */
 .c-btn--view::after {
     top: 60%;
@@ -620,6 +624,11 @@ h2 {
 
 .c-btn--play::after {
     background-image: url("../images/ico_play.svg");
+}
+
+.c-btn--back::after {
+    background-image: url("../images/ico_arrow_left.svg");
+    left: 16px;
 }
 
 /* =========================
