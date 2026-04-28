@@ -581,7 +581,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const closeModal = document.getElementById('js-close-modal');
 	const submitBtn = form.querySelector('button[type="submit"]');
 
-	// Encode form data (required by Netlify)
+	// Encode function for Netlify
 	function encode(data) {
 		return Object.keys(data)
 			.map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -594,6 +594,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const inputs = form.querySelectorAll('[required]');
 		let valid = true;
 
+		// Reset error state (no inline styles)
 		inputs.forEach(input => input.classList.remove('is-error'));
 
 		// Validation
@@ -606,14 +607,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		if (!valid) return;
 
-		// UX: loading state
-		submitBtn.disabled = true;
+		// Lock button (UX improvement)
 		const originalText = submitBtn.textContent;
+		submitBtn.disabled = true;
 		submitBtn.textContent = 'Sending...';
 
 		const formData = new FormData(form);
 		const data = {};
-		formData.forEach((value, key) => data[key] = value);
+
+		formData.forEach((value, key) => {
+			data[key] = value;
+		});
 
 		fetch("/", {
 			method: "POST",
@@ -624,7 +628,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			modal.style.display = 'flex';
 			form.reset();
 		})
-		.catch(() => {
+		.catch((error) => {
+			console.error(error);
 			alert("Failed to send message. Please try again.");
 		})
 		.finally(() => {

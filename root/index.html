@@ -412,22 +412,50 @@
                     </div>
                     <!-- RIGHT -->
                     <div class="c-contact__form-wrap">
-                        <form class="c-contact__form" id="js-contact-form">
+                        <form 
+                            class="c-contact__form" 
+                            id="js-contact-form"
+                            name="contact"
+                            method="POST"
+                            data-netlify="true"
+                            data-netlify-honeypot="bot-field"
+                        >
+
+                            <!-- Required by Netlify -->
+                            <input type="hidden" name="form-name" value="contact">
+
+                            <!-- Honeypot (spam protection) -->
+                            <input type="text" name="bot-field" style="display:none">
+
                             <input type="text" class="c-contact__input" name="name" placeholder="Your Name" required>
                             <input type="email" class="c-contact__input" name="email" placeholder="Your Email" required>
-                            <select class="c-contact__input" name="project">
-                                <option value="" disabled selected>Project Type</option>
-                                <option>Web Development</option>
-                                <option>SEO Optimization</option>
-                                <option>UI/UX Design</option>
+
+                            <select class="c-contact__input" name="project" required>
+                            <option value="" disabled selected>Project Type</option>
+                            <option>Web Development</option>
+                            <option>SEO Optimization</option>
+                            <option>UI/UX Design</option>
                             </select>
+
                             <select class="c-contact__input" name="contact_method" required>
-                                <option value="email">Email</option>
-                                <option value="chat">Chat (Messenger / WhatsApp)</option>
-                                <option value="call">Phone Call</option>
+                            <option value="email">Email</option>
+                            <option value="chat">Chat (Messenger / WhatsApp)</option>
+                            <option value="call">Phone Call</option>
                             </select>
-                            <textarea class="c-contact__input c-contact__textarea" name="message" placeholder="Tell me about your project..." required></textarea>
-                            <button type="submit" class="c-btn c-btn--primary c-contact__btn c-btn--send">Send Message</button>
+
+                            <textarea 
+                            class="c-contact__input c-contact__textarea" 
+                            name="message" 
+                            placeholder="Tell me about your project..." 
+                            required>
+                            </textarea>
+
+                            <button 
+                            type="submit" 
+                            class="c-btn c-btn--primary c-contact__btn c-btn--send">
+                            Send Message
+                            </button>
+
                         </form>
                     </div>
                 </div>
