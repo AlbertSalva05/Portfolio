@@ -626,12 +626,12 @@ h2 {
     background-image: url("../images/ico_play.svg");
 }
 
-.c-btn--send::after {
+/* .c-btn--send::after {
     background-image: url("../images/ico_arrow_left.svg");
     -webkit-transform: translateY(-50%) rotate(180deg);
         -ms-transform: translateY(-50%) rotate(180deg);
             transform: translateY(-50%) rotate(180deg);
-}
+} */
 
 .c-btn--back::after {
     background-image: url("../images/ico_arrow_left.svg");
@@ -4549,6 +4549,14 @@ select.c-contact__input option {
     transition: all 0.3s ease;
 }
 
+.c-btn--send::after {
+    background-image: url("../images/ico_arrow_left.svg");
+    -webkit-transform: translateY(-50%) rotate(180deg);
+        -ms-transform: translateY(-50%) rotate(180deg);
+            transform: translateY(-50%) rotate(180deg);
+}
+
+
 .c-contact__btn:hover {
     -webkit-transform: translateY(-2px);
     -ms-transform: translateY(-2px);
@@ -4556,6 +4564,14 @@ select.c-contact__input option {
     -webkit-box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
     box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
 }
+
+.c-contact__btn:hover::after  {
+    background-image: url("../images/ico_arrow_left.svg");
+    -webkit-transform: translateY(-50%) rotate(180deg);
+        -ms-transform: translateY(-50%) rotate(180deg);
+            transform: translateY(-50%) rotate(180deg);
+}
+
 
 @media print, screen and (min-width: 768px) {
     .c-contact {

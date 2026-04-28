@@ -579,27 +579,58 @@ document.addEventListener("DOMContentLoaded", () => {
 	const form = document.getElementById('js-contact-form');
 	const modal = document.getElementById('js-success-modal');
 	const closeModal = document.getElementById('js-close-modal');
+	const submitBtn = form.querySelector('button[type="submit"]');
+
+	// Encode form data (required by Netlify)
+	function encode(data) {
+		return Object.keys(data)
+			.map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+			.join("&");
+	}
 
 	form.addEventListener('submit', function(e) {
 		e.preventDefault();
 
-		// Basic validation check
 		const inputs = form.querySelectorAll('[required]');
 		let valid = true;
 
+		inputs.forEach(input => input.classList.remove('is-error'));
+
+		// Validation
 		inputs.forEach(input => {
 			if (!input.value.trim()) {
 				valid = false;
-				input.style.border = '1px solid red';
-			} else {
-				input.style.border = 'none';
+				input.classList.add('is-error');
 			}
 		});
 
-		if (valid) {
+		if (!valid) return;
+
+		// UX: loading state
+		submitBtn.disabled = true;
+		const originalText = submitBtn.textContent;
+		submitBtn.textContent = 'Sending...';
+
+		const formData = new FormData(form);
+		const data = {};
+		formData.forEach((value, key) => data[key] = value);
+
+		fetch("/", {
+			method: "POST",
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body: encode(data)
+		})
+		.then(() => {
 			modal.style.display = 'flex';
 			form.reset();
-		}
+		})
+		.catch(() => {
+			alert("Failed to send message. Please try again.");
+		})
+		.finally(() => {
+			submitBtn.disabled = false;
+			submitBtn.textContent = originalText;
+		});
 	});
 
 	// Close modal
@@ -607,7 +638,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		modal.style.display = 'none';
 	});
 
-	// Close modal on outside click
 	window.addEventListener('click', (e) => {
 		if (e.target === modal) {
 			modal.style.display = 'none';
@@ -1296,3 +1326,66 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+$(function () {
+
+  // =========================
+  // INIT EMAILJS
+  // =========================
+  emailjs.init("YOUR_PUBLIC_KEY"); // replace
+
+  const $form = $('#js-contact-form');
+  const $btn = $form.find('button[type="submit"]');
+
+  // =========================
+  // SUBMIT HANDLER
+  // =========================
+  $form.on('submit', function (e) {
+    e.preventDefault();
+
+    const formEl = this;
+
+    // =========================
+    // BASIC VALIDATION (fast + minimal)
+    // =========================
+    const email = $form.find('input[name="email"]').val().trim();
+    const name = $form.find('input[name="name"]').val().trim();
+    const message = $form.find('textarea[name="message"]').val().trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    // =========================
+    // UX: LOCK BUTTON
+    // =========================
+    $btn.prop('disabled', true).text('Sending...');
+
+    // =========================
+    // SEND EMAIL
+    // =========================
+    emailjs.sendForm(
+      'YOUR_SERVICE_ID',   // replace
+      'YOUR_TEMPLATE_ID',  // replace
+      formEl
+    )
+    .then(function () {
+      alert('Message sent successfully!');
+      formEl.reset();
+    })
+    .catch(function (error) {
+      console.error('EmailJS Error:', error);
+      alert('Failed to send message. Please try again.');
+    })
+    .finally(function () {
+      $btn.prop('disabled', false).text('Send Message');
+    });
+
+  });
+
+});
