@@ -823,7 +823,7 @@ h2 {
 .c-hero__image-wrapper {
     position: relative;
     z-index: 2;
-    width: 400px;
+    width: 240px;
     -webkit-animation: floatImage 6s ease-in-out infinite;
     animation: floatImage 6s ease-in-out infinite;
 }
@@ -872,8 +872,8 @@ h2 {
 
 .c-hero__card {
     position: absolute;
-    right: -40px;
-    bottom: 40px;
+    right: -10%;
+    bottom: -25%;
     z-index: 3;
     padding: 25px;
     border-radius: var(--radius-md);
@@ -1042,7 +1042,7 @@ h2 {
 
 @media only screen and (max-width: 767px) {
     .c-hero {
-        padding: 120px 10px 150px;
+        padding: 120px 10px 230px;
     }
     .c-hero__inner {
         text-align: center;
@@ -1050,11 +1050,11 @@ h2 {
         grid-template-columns: 1fr;
     }
     .c-hero__image-wrapper {
-        width: 260px;
+        max-width: 260px;
     }
     .c-hero__card {
         right: auto;
-        bottom: 0px;
+        bottom: -20%;
         left: auto;
         margin-top: 20px;
     }
@@ -1062,7 +1062,7 @@ h2 {
         margin-top: 20px;
     }
     .c-hero__visual {
-        margin-top: -50px;
+        margin-top: 50px;
     }
 }
 
@@ -1110,8 +1110,9 @@ h2 {
         grid-template-columns: 1fr 1.5fr;
     }
     .c-hero__bubble {
-        left: -110px !important;
+        left: -75% !important;
         width: 250px !important;
+        top: -7% !important;
     }
     .c-hero__bubble-static {
         font-size: var(--fs-16) !important;
@@ -1124,6 +1125,7 @@ h2 {
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
     .c-hero__card {
         right: 0 !important;
+        bottom: -30% !important;
     }
     .c-hero__actions {
         display: -webkit-box;
@@ -1160,8 +1162,8 @@ h2 {
 ========================= */
 .c-hero__bubble {
     position: absolute;
-    top: 75px;
-    left: -150px;
+    top: -10%;
+    left: -85%;
     z-index: 4;
     width: 280px;
     min-height: 100px;
@@ -1499,9 +1501,9 @@ h2 {
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
     .c-hero__bubble {
-        top: 40px;
+        top: -7%;
         right: 0;
-        left: -56px;
+        left: -50%;
         max-width: 190px;
         font-size: var(--fs-12);
     }
@@ -1528,8 +1530,10 @@ h2 {
 
 @media only screen and (min-width: 1200px) and (max-width: 1440px) {
     .c-hero__bubble {
-        top: 60px;
-        left: -135px;
+        /* top: -10%; */
+        left: -90%;
+        /* font-size: 12px; */
+        width: 120%;
     }
 }
 
