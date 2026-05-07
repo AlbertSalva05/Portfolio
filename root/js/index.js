@@ -576,7 +576,8 @@ async function initExpertiseSection() {
 
                 modal.classList.add('is-active');
                 trapFocus(modal);
-                document.body.classList.add('is-modal-open');
+                
+                lockBodyScroll();
             });
 
             fragment.appendChild(card);
@@ -587,6 +588,7 @@ async function initExpertiseSection() {
         function closeModal() {
             modal.classList.remove('is-active');
             document.body.classList.remove('is-modal-open');
+            unlockBodyScroll();
         }
 
         modalClose?.addEventListener('click', closeModal);
@@ -1136,6 +1138,20 @@ async function fetchJSON(url) {
     }
 
     return response.json();
+}
+
+
+function lockBodyScroll() {
+    const scrollBarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
+
+    document.body.style.paddingRight = `${scrollBarWidth}px`;
+    document.body.classList.add('is-modal-open');
+}
+
+function unlockBodyScroll() {
+    document.body.style.paddingRight = '';
+    document.body.classList.remove('is-modal-open');
 }
 
 
