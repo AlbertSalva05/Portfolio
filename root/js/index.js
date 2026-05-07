@@ -2,10 +2,6 @@
 
 document.documentElement.classList.add("js-ready");
 
-window.addEventListener('load', () => {
-    document.body.classList.remove('is-loading');
-});
-
 /* =========================================================
    APP CONFIG
 ========================================================= */

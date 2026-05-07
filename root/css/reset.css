@@ -116,6 +116,26 @@ html:not(.js-ready) .c-performance__bar {
     transform: none;
 }
 
+
+.js-ready .c-about__profile,
+.js-ready .c-about__content,
+.js-ready .c-about__image,
+.js-ready .c-about__stats{
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+
+.c-about__profile,
+.c-about__content,
+.c-about__image,
+.c-about__stats {
+    opacity: 1;
+    transform: none;
+}
+
+
+
 * {
     margin: 0;
     padding: 0;
