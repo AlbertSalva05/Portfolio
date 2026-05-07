@@ -81,9 +81,9 @@ function loadSlickAssets() {
     if (slickLoaded) return Promise.resolve();
 
     return Promise.all([
-        loadCSS('/css/slick/slick.css'),
-        loadCSS('/css/slick/slick-theme.css'),
-        loadScript('/js/slick/slick.min.js')
+        loadCSS('css/slick/slick.css'),
+        loadCSS('css/slick/slick-theme.css'),
+        loadScript('js/slick/slick.min.js')
     ]).then(() => slickLoaded = true);
 }
 

@@ -12,42 +12,41 @@
     <link rel="icon" type="image/x-icon" href="images/favicon.png" />
 
     <style>
-        /* Minimal reset needed for first paint */
         html, body {
             margin: 0;
-            padding: 0;
-            background-color: #0b1220;
+            font-family: Inter, system-ui, sans-serif;
+            background: #0b1220;
         }
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
-        /* Lock hero immediately */
         .c-hero {
-            position: relative;
             min-height: 100vh;
-            overflow: hidden;
             background: linear-gradient(135deg, #0b1220, #1e293b);
         }
 
+        .c-hero__inner {
+            display: grid;
+            align-items: center;
+        }
         </style>
+
 
     <!-- =========================
         GOOGLE FONTS (ASYNC)
     ========================== -->
+        
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-        media="print"
-        onload="this.media='all'"
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'"
     >
     <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
     </noscript>
+
 
     <!-- =========================
         ICON FONTS (ASYNC)
@@ -69,15 +68,15 @@
 
     <!-- ✅ RESET CSS (NOW NON‑BLOCKING ✅) -->
     <!-- <link rel="stylesheet" href="/css/reset.css" media="print" onload="this.media='all'"> -->
-    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="css/reset.css">
     <noscript>
-        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="css/reset.css">
     </noscript>
 
     <!-- ✅ NON‑CRITICAL (ASYNC) -->
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="css/index.css">
     <noscript>
-        <link rel="stylesheet" href="/css/index.css">
+        <link rel="stylesheet" href="css/index.css">
     </noscript>
 
 </head>
