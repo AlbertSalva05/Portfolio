@@ -467,6 +467,8 @@ async function initExpertiseSection() {
                         alt="${item.title}"
                         width="56"
                         height="56"
+                        loading="lazy"
+                        decoding="async"
                     >
                 `;
 
@@ -651,14 +653,14 @@ async function initProjects() {
 
                             <a
                                 href="${item.case || '#'}"
-                                class="c-btn c-btn--primary"
+                                class="c-btn c-btn--primary c-btn--view"
                             >
                                 View Case
                             </a>
 
                             <a
                                 href="${item.live || '#'}"
-                                class="c-btn c-btn--ghost"
+                                class="c-btn c-btn--ghost c-btn--play"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
