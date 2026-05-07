@@ -4,6 +4,11 @@
    APP CONFIG
 ========================================================= */
 
+window.addEventListener('load', () => {
+    document.body.classList.remove('is-loading');
+});
+
+
 const CONFIG = {
     visibleSkills: 5,
     animationDelay: 80,

@@ -56,9 +56,31 @@
     <noscript>
         <link rel="stylesheet" href="/css/index.css">
     </noscript>
+
+        
+    <style>
+        html, body {
+            background-color: #0b1220; /* your hero background */
+            margin: 0;
+        }
+        .c-hero {
+            min-height: 100vh;
+            overflow: hidden;
+            background: -o-linear-gradient(315deg, var(--bg-dark), #1e293b);
+            background: linear-gradient(135deg, var(--bg-dark), #1e293b);
+        }
+        
+        .is-loading * {
+            animation: none !important;
+            transition: none !important;
+        }
+
+    </style>
+
 </head>
 
-    <body>
+    
+<body class="is-loading">
         <!-- Google Tag Manager (noscript) -->
         <!-- code here... -->
         <!-- End Google Tag Manager (noscript) -->
@@ -68,7 +90,7 @@
             <div class="c-nav__inner container">
                 <!-- Logo -->
                 <div class="c-nav__logo">
-                    <a href="#hero"><img src="images/img_nav_logo.webp" alt="" class="" loading="eager" fetchpriority="high" decoding="sync"></a>
+                    <a href="#hero"><img src="images/img_nav_logo.webp" alt="" class="" fetchpriority="high" decoding="sync" loading="eager"></a>
                 </div>
                 <!-- Navigation -->
                 <nav class="c-nav__menu" id="js-menu" aria-label="Primary Navigation">
