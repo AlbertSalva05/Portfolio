@@ -105,6 +105,17 @@ html {
     scroll-behavior: smooth;
 }
 
+
+/* JS readiness gate */
+html:not(.js-ready) .c-about,
+html:not(.js-ready) .c-expertise__card,
+html:not(.js-ready) .c-process__card,
+html:not(.js-ready) .c-performance__metric,
+html:not(.js-ready) .c-performance__bar {
+    opacity: 1;
+    transform: none;
+}
+
 * {
     margin: 0;
     padding: 0;

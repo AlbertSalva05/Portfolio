@@ -1,5 +1,11 @@
 'use strict';
 
+document.documentElement.classList.add("js-ready");
+
+window.addEventListener('load', () => {
+    document.body.classList.remove('is-loading');
+});
+
 /* =========================================================
    APP CONFIG
 ========================================================= */
@@ -1126,10 +1132,6 @@ function initScrollTop() {
 /* =========================================================
    HELPERS
 ========================================================= */
-
-window.addEventListener('load', () => {
-    document.body.classList.remove('is-loading');
-});
 
 async function fetchJSON(url) {
 
