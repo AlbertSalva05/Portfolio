@@ -45,12 +45,13 @@
         <link rel="stylesheet" href="css/slick/slick-theme.css">
     </noscript>
 
-    <!-- =========================
-        CRITICAL STYLES (BLOCKING)
-    ========================== -->
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/component.css">
-    <link rel="stylesheet" href="css/index.css">
+    <!-- ✅ CRITICAL (blocking, small) -->
+    <link rel="stylesheet" href="/css/reset.css">
+
+    <!-- ✅ NON‑CRITICAL (async) -->
+    <link rel="stylesheet" href="/css/index.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/css/index.css"></noscript>
+
 
     </head>
     <body>
@@ -63,7 +64,7 @@
             <div class="c-nav__inner container">
                 <!-- Logo -->
                 <div class="c-nav__logo">
-                    <a href="#hero"><img src="images/img_nav_logo.png" alt="" class=""></a>
+                    <a href="#hero"><img src="images/img_nav_logo.webp" alt="" class="" loading="eager" fetchpriority="high" decoding="sync"></a>
                 </div>
                 <!-- Navigation -->
                 <nav class="c-nav__menu" id="js-menu" aria-label="Primary Navigation">
@@ -109,7 +110,7 @@
                 <!-- Visual -->
                 <div class="c-hero__visual">
                     <div class="c-hero__image-wrapper">
-                        <img src="images/img_hero_01.png" alt="James Albert Salva - Senior Developer" class="c-hero__image" loading="lazy" fetchpriority="high" decoding="sync">
+                        <img src="images/img_hero_01.webp" alt="James Albert Salva - Senior Developer" class="c-hero__image" loading="lazy" fetchpriority="high" decoding="sync">
                         <div class="c-hero__image-glow"></div>
                         <!-- Speech Bubble -->
                         <div class="c-hero__bubble" aria-live="polite" aria-atomic="true">
