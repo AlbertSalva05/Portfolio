@@ -2300,6 +2300,7 @@ h2 {
 
 .c-expertise__card-title {
     display: block;
+    color: var(--white);
     letter-spacing: 0.5px;
 }
 
@@ -2314,6 +2315,7 @@ h2 {
     -webkit-transform: translateY(40px);
     -ms-transform: translateY(40px);
     transform: translateY(40px);
+    transition-delay: var(--delay, 0ms);
 }
 
 .c-expertise__card.is-visible {
@@ -3200,7 +3202,7 @@ h2 {
     .c-process {
         padding: 100px 20px;
     }
-    .c-process__title {
+    .c-process__title {.slick-dots
         margin-bottom: 60px;
     }
 }
@@ -3345,25 +3347,29 @@ h2 {
     border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.8);
+
     opacity: 0;
+
     -webkit-box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+
     -webkit-transform: translateY(20px);
     -ms-transform: translateY(20px);
     transform: translateY(20px);
-    -webkit-transition: -webkit-transform 0.3s ease,
+
+    -webkit-transition:
+        opacity 0.6s ease,
+        -webkit-transform 0.6s ease,
         -webkit-box-shadow 0.3s ease;
-    transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
-    -o-transition: transform 0.3s ease, box-shadow 0.3s ease;
-    -webkit-transition: -webkit-transform 0.3s ease,
-        -webkit-box-shadow 0.3s ease;
-    -webkit-transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
-    transition: transform 0.3s ease, box-shadow 0.3s ease,
-        -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
-    transition: transform 0.3s ease, box-shadow 0.3s ease,
-        -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease,
+        box-shadow 0.3s ease;
+
+    transition-delay: var(--delay, 0ms);
+
+    will-change: opacity, transform;
 }
 
 .c-performance__metric:hover {
@@ -3403,11 +3409,26 @@ h2 {
 
 .c-performance__bar {
     margin-bottom: 18px;
+
     text-align: left;
+
     opacity: 0;
+
     -webkit-transform: translateY(20px);
     -ms-transform: translateY(20px);
     transform: translateY(20px);
+
+    -webkit-transition:
+        opacity 0.6s ease,
+        -webkit-transform 0.6s ease;
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+
+    transition-delay: var(--delay, 0ms);
+
+    will-change: opacity, transform;
 }
 
 .c-performance__bar-track {
@@ -3619,6 +3640,38 @@ h2 {
         -webkit-transform: translateY(-8px);
         transform: translateY(-8px);
     }
+}
+
+/* =========================================
+   REVEAL STATES
+========================================= */
+
+.c-performance__metric.is-visible,
+.c-performance__bar.is-visible {
+    opacity: 1;
+
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+}
+
+/* =========================================
+   STAGGER SUPPORT
+========================================= */
+
+.c-performance__metric,
+.c-performance__bar {
+    -webkit-transition:
+        opacity 0.6s ease,
+        -webkit-transform 0.6s ease;
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+
+    transition-delay: var(--delay, 0ms);
+
+    will-change: opacity, transform;
 }
 
 /* =========================
@@ -3914,6 +3967,9 @@ h2 {
         padding: 20px;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
+    }
+    .js-testimonials-slider .slick-dots {
+        bottom: -50px;
     }
     .c-testimonials__card {
         padding: 40px;
@@ -5129,3 +5185,38 @@ select.c-contact__input option {
         top: -20px;
     }
 }
+
+
+img {
+    max-width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.c-projects__image {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
