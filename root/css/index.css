@@ -3069,11 +3069,11 @@ h2 {
 .c-process__grid-content {
     display: -ms-grid;
     display: grid;
-
     position: relative;
     z-index: 2;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 25px;
+    padding-top: 20px;
 }
 
 /* =========================
@@ -3204,6 +3204,7 @@ h2 {
     }
     .c-process__title {.slick-dots
         margin-bottom: 60px;
+        margin-bottom: 30px;
     }
 }
 
