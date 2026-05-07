@@ -1040,6 +1040,79 @@ async function fetchJSON(url) {
 }
 
 /* =========================================================
+   DEFER SLICK UNTIL VISIBLE
+========================================================= */
+
+function initDeferredSlick() {
+
+    const slider = document.querySelector('.js-project-slider');
+
+    if (!slider) return;
+
+    let slickLoaded = false;
+
+    const observer = new IntersectionObserver(
+        (entries, obs) => {
+
+            if (!entries[0].isIntersecting) return;
+
+            if (!slickLoaded) {
+                slickLoaded = true;
+                loadSlickAssets().then(() => {
+                    initProjectSlider(); // ✅ your existing init
+                });
+            }
+
+            obs.disconnect();
+
+        },
+        {
+            rootMargin: '0px 0px -15% 0px',
+            threshold: 0.1
+        }
+    );
+
+    observer.observe(slider);
+}
+
+/* =========================================================
+   DEFER TESTIMONIALS SLICK UNTIL VISIBLE
+========================================================= */
+
+function initDeferredTestimonials() {
+
+    const slider = document.getElementById('js-testimonials-slider');
+
+    if (!slider) return;
+
+    let slickLoaded = false;
+
+    const observer = new IntersectionObserver(
+        (entries, obs) => {
+
+            if (!entries[0].isIntersecting) return;
+
+            if (!slickLoaded) {
+                slickLoaded = true;
+
+                loadSlickAssets().then(() => {
+                    initTestimonialsSlider();
+                });
+            }
+
+            obs.disconnect();
+
+        },
+        {
+            rootMargin: '0px 0px -20% 0px',
+            threshold: 0.1
+        }
+    );
+
+    observer.observe(slider);
+}
+
+/* =========================================================
    PERFORMANCE SECTION
 ========================================================= */
 
