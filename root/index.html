@@ -21,10 +21,10 @@
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
         media="print"
-        onload="this.media='all'">
+        onload="this.media='all'"
+    >
     <noscript>
-        <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
     </noscript>
 
     <!-- =========================
@@ -45,15 +45,19 @@
         <link rel="stylesheet" href="css/slick/slick-theme.css">
     </noscript>
 
-    <!-- ✅ CRITICAL (blocking, small) -->
-    <link rel="stylesheet" href="/css/reset.css">
+    <!-- ✅ RESET CSS (NOW NON‑BLOCKING ✅) -->
+    <link rel="stylesheet" href="/css/reset.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="/css/reset.css">
+    </noscript>
 
-    <!-- ✅ NON‑CRITICAL (async) -->
+    <!-- ✅ NON‑CRITICAL (ASYNC) -->
     <link rel="stylesheet" href="/css/index.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="/css/index.css"></noscript>
+    <noscript>
+        <link rel="stylesheet" href="/css/index.css">
+    </noscript>
+</head>
 
-
-    </head>
     <body>
         <!-- Google Tag Manager (noscript) -->
         <!-- code here... -->
