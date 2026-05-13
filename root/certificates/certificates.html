@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>James Albert Salva | Web Portfolio</title>
+
+        <meta name="description" content="Senior Lead Developer specializing in performance-driven web development, SEO, and scalable design systems." />
+
+        <link rel="icon" type="image/x-icon" href="images/favicon.png" />
+
+        <style>
+            html, body {
+                margin: 0;
+                font-family: Inter, system-ui, sans-serif;
+                background: #0b1220;
+            }
+
+            .c-hero {
+                min-height: 100vh;
+                background: linear-gradient(135deg, #0b1220, #1e293b);
+            }
+
+            .c-hero__inner {
+                display: grid;
+                align-items: center;
+            }
+            </style>
+
+
+        <!-- =========================
+            GOOGLE FONTS (ASYNC)
+        ========================== -->
+            
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link
+        rel="preload"
+        as="style"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'"
+        >
+        <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+        </noscript>
+
+
+        <!-- =========================
+            ICON FONTS (ASYNC)
+        ========================== -->
+        <link rel="stylesheet" href="/css/all.min.css" media="print" onload="this.media='all'">
+        <noscript>
+            <link rel="stylesheet" href="/css/all.min.css">
+        </noscript>
+
+        <!-- =========================
+            SLICK CSS (DEFERRED)
+        ========================== -->
+        <!-- <link rel="stylesheet" href="css/slick/slick.css" media="print" onload="this.media='all'">
+        <link rel="stylesheet" href="css/slick/slick-theme.css" media="print" onload="this.media='all'">
+        <noscript>
+            <link rel="stylesheet" href="css/slick/slick.css">
+            <link rel="stylesheet" href="css/slick/slick-theme.css">
+        </noscript> -->
+
+        <!-- ✅ RESET CSS (NOW NON‑BLOCKING ✅) -->
+        <!-- <link rel="stylesheet" href="/css/reset.css" media="print" onload="this.media='all'"> -->
+        <link rel="stylesheet" href="/css/reset.css">
+        <noscript>
+            <link rel="stylesheet" href="/css/reset.css">
+        </noscript>
+
+        <!-- ✅ NON‑CRITICAL (ASYNC) -->
+        <link rel="stylesheet" href="/css/index.css">
+        <noscript>
+            <link rel="stylesheet" href="/css/index.css">
+        </noscript>
+        <link rel="stylesheet" type="text/css" href="/css/casestudy/common.css">
+        <noscript>
+            <link rel="stylesheet" href="/css/casestudy/common.css">
+        </noscript>
+        <link rel="stylesheet" type="text/css" href="/css/certificates/certificate.css">
+        <noscript>
+            <link rel="stylesheet" href="/css/certificates/certificate.css">
+        </noscript>
+
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <!-- code here... -->
+        <!-- End Google Tag Manager (noscript) -->
+
+        <!-- start c-nav -->
+        <header class="c-nav" id="js-nav">
+            <div class="c-nav__inner container">
+                <!-- Logo -->
+                <div class="c-nav__logo">
+                    <a href="/"><img src="/images/img_nav_logo.png" alt="" class=""></a>
+                </div>
+                <!-- Navigation -->
+                <nav class="c-nav__menu" id="js-menu" aria-label="Primary Navigation">
+                    <ul class="c-nav__menu-list">
+                        <li><a href="/" class="c-nav__link">Home</a></li>
+                        <li><a href="/#about" class="c-nav__link">About</a></li>
+                        <li><a href="/#projects" class="c-nav__link">Projects</a></li>
+                        <li><a href="/#process" class="c-nav__link">Process</a></li>
+                        <li><a href="/#faq" class="c-nav__link">FAQ</a></li>
+                        <li><a href="/#contact" class="c-nav__link">Contact</a></li>
+                    </ul>
+                </nav>
+                <!-- Hamburger -->
+                <button class="c-nav__toggle" id="js-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="js-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+        <!-- end c-nav -->
+
+        <section class="c-case c-case--certificates">
+
+            <div class="c-case__bg" aria-hidden="true">
+                <span class="c-case__shape c-case__shape--1"></span>
+                <span class="c-case__shape c-case__shape--2"></span>
+                <span class="c-case__shape c-case__shape--3"></span>
+                <div class="c-case__grid_bg"></div>
+            </div>
+
+            <div class="c-case__container container">
+
+                <!-- HERO -->
+                <header class="c-case__hero">
+
+                    <div class="c-case__hero-content">
+                        <span class="c-case__number">Certifications</span>
+                        <span class="c-case__label">Professional Credentials</span>
+
+                        <h1 class="c-case__title highlight">Web &amp; AI Certifications Portfolio</h1>
+
+                        <p class="c-case__desc">A collection of verified certifications focused on frontend development, AI fundamentals, and performance-driven web engineering.</p>
+
+                        <div class="c-case__meta">
+                            <div class="c-case__meta-txt">
+                                <span class="c-case__meta-label">Focus</span>
+                                <p>Frontend • SEO • AI</p>
+                            </div>
+
+                            <div class="c-case__meta-txt">
+                                <span class="c-case__meta-label">Total Certificates</span>
+                                <p>3 Completed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="c-case__hero-media c-case__image-glow">
+                        <img src="/certificates/img_hero_certificate.png" alt="" loading="lazy" width="400" height="260">
+                    </div>
+
+                </header>
+
+                <div class="c-case__content">
+
+                    <!-- CERT 1 -->
+                    <section class="c-case__section">
+
+                        <div class="c-case__grid">
+
+                            <div class="c-case__media">
+                                <img src="/certificates/img_html_certificate.jpg" alt="HTML Essentials certificate" loading="lazy" width="400" height="260">
+                            </div>
+
+                            <div class="c-case__text">
+                                <h2 class="c-case__section-title">HTML Essentials</h2>
+                                <div class="c-case__badge-wrap c-case__badge--html">
+                                    <div class="c-case__badge">
+                                        <span class="c-case__badge-top">Verified</span>
+                                        <span class="c-case__badge-check">
+                                            <i class="fa-solid fa-check"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <h4>Issuer</h4>
+                                <p>Cisco Networking Academy</p>
+
+                                <h4>Issued Date</h4>
+                                <p>May 2026</p>
+
+                                <h4>Description</h4>
+                                <p>Focused on semantic HTML, accessibility, and SEO-friendly structure.</p>
+
+                                <h4>Skills</h4>
+                                <ul>
+                                    <li>HTML5</li>
+                                    <li>Accessibility</li>
+                                    <li>Forms</li>
+                                    <li>SEO Markup</li>
+                                    <li>Web development</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- CERT 2 -->
+                    <section class="c-case__section">
+
+                        <div class="c-case__grid">
+
+                            <div class="c-case__media">
+                                <img src="/certificates/img_css_certificate.jpg" alt="CSS Essentials certificate" loading="lazy" width="400" height="260">
+                            </div>
+
+                            <div class="c-case__text">
+                                <h2 class="c-case__section-title">CSS Essentials</h2>
+                                <div class="c-case__badge-wrap c-case__badge--css">
+                                    <div class="c-case__badge">
+                                        <span class="c-case__badge-top">Verified</span>
+                                        <span class="c-case__badge-check">
+                                            <i class="fa-solid fa-check"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <h4>Issuer</h4>
+                                <p>Cisco Networking Academy</p>
+
+                                <h4>Issued Date</h4>
+                                <p>May 2026</p>
+
+                                <h4>Description</h4>
+                                <p>Focused on responsive layouts, Flexbox, Grid, and animations.</p>
+
+                                <h4>Skills</h4>
+                                <ul>
+                                    <li>CSS3</li>
+                                    <li>Saas</li>
+                                    <li>Less</li>
+                                    <li>Flexbox</li>
+                                    <li>Grid</li>
+                                    <li>Responsive</li>
+                                    <li>Animations</li>
+                                    <li>Web Design</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- CERT 3 -->
+                    <section class="c-case__section">
+
+                        <div class="c-case__grid">
+
+                            <div class="c-case__media">
+                                <img src="/certificates/img_ai_certificate.jpg" alt="Apply AI Analyze Customer Reviews certificate" loading="lazy" width="400" height="260">
+                            </div>
+
+                            <div class="c-case__text">
+                                <h2 class="c-case__section-title">Apply AI to Analyze Customer Reviews</h2>
+                                <div class="c-case__badge-wrap c-case__badge--ai">
+                                    <div class="c-case__badge">
+                                        <span class="c-case__badge-top">Verified</span>
+                                        <span class="c-case__badge-check">
+                                            <i class="fa-solid fa-check"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <h4>Issuer</h4>
+                                <p>Cisco Networking Academy</p>
+
+                                <h4>Issued Date</h4>
+                                <p>May 2026</p>
+
+                                <h4>Description</h4>
+                                <p>Applied AI techniques for sentiment analysis and data insights.</p>
+
+                                <h4>Skills</h4>
+                                <ul>
+                                    <li>AI Basics</li>
+                                    <li>Data Analysis</li>
+                                    <li>Sentiment</li>
+                                    <li>Automation</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </section>
+                    <!-- CERT 4 -->
+                    <section class="c-case__section">
+
+                        <div class="c-case__grid">
+
+                            <!-- IMAGE -->
+                            <div class="c-case__media">
+                                <img src="/certificates/img_security_certificate.jpg"
+                                    alt="Digital Safety and Security Awareness certificate"
+                                    loading="lazy"
+                                    width="400"
+                                    height="260">
+                            </div>
+
+                            <!-- TEXT -->
+                            <div class="c-case__text">
+
+                                <h2 class="c-case__section-title">
+                                    Digital Safety and Security Awareness
+                                </h2>
+
+                                <!-- ✅ BADGE (same system) -->
+                                <div class="c-case__badge-wrap">
+                                    <div class="c-case__badge c-case__badge--security">
+                                        <span class="c-case__badge-top">Certified</span>
+                                        <span class="c-case__badge-check">
+                                            <i class="fa-solid fa-check"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <h4>Issuer</h4>
+                                <p>Cisco Networking Academy</p>
+
+                                <h4>Issued Date</h4>
+                                <p>May 2026</p>
+
+                                <h4>Description</h4>
+                                <p>
+                                    Focused on cybersecurity fundamentals, online safety practices,
+                                    and protection against common digital threats in modern web environments.
+                                </p>
+
+                                <h4>Skills</h4>
+                                <ul>
+                                    <li>Cybersecurity Basics</li>
+                                    <li>Data Protection</li>
+                                    <li>Threat Awareness</li>
+                                    <li>Safe Browsing</li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <a href="/" class="c-btn c-btn--primary c-btn--back">Back to TOP page</a>
+                </div>
+            </div>
+        </section>
+        <!-- start c-footer -->
+        <footer class="c-footer" id="footer">
+            <div class="c-footer__bg"></div>
+            <div class="c-footer__inner container">
+                <div class="c-footer__top">
+                    <div class="c-footer__col">
+                        <h3 class="c-footer__logo"><a href="/"><img src="/images/img_nav_logo.png" alt="" class=""></a></h3>
+                        <p class="c-footer__desc"> Building scalable, high-performance web experiences with a focus on quality and results. </p>
+                    </div>
+                    <div class="c-footer__col c-footer__col--divider">
+                        <h4 class="c-footer__title">Quick Links</h4>
+                        <ul class="c-footer__list">
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                <a href="/#about">About</a>
+                            </li>
+                            <li>
+                                <a href="/#projects">Projects</a>
+                            </li>
+                            <li>
+                                <a href="/#contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="c-footer__col c-footer__col--divider">
+                        <h4 class="c-footer__title">Services</h4>
+                        <ul class="c-footer__list">
+                            <li>Web Development</li>
+                            <li>SEO Optimization</li>
+                            <li>UI/UX Design</li>
+                            <li>QA & Testing</li>
+                        </ul>
+                    </div>
+                    <div class="c-footer__col c-footer__col--divider">
+                        <h4 class="c-footer__title">Connect</h4>
+                        <div class="c-footer__social">
+                            <a href="#" data-tooltip="Facebook">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="https://ph.linkedin.com/in/james-albert-salva-b05164158" data-tooltip="LinkedIn">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/AlbertSalva05" data-tooltip="GitHub">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+							<a href="https://james-albert-salva.netlify.app/" data-tooltip="Netlify">
+								<span class="iconify" data-icon="simple-icons:netlify"></span>
+							</a>
+							<a href="mailto:albertsalva360@email.com" data-tooltip="Gmail">
+								<span class="iconify" data-icon="simple-icons:gmail"></span>
+							</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-footer__bottom">
+                    <p class="c-footer__copy">&copy; 2026 James Albert Salva. All rights reserved.<br>
+                    Disclaimer: The developer retains the right to display the project in portfolio for promotional purposes.</p>
+                </div>
+                <!-- anchor for button positioning -->
+                <div class="c-footer__anchor"></div>
+            </div>
+            <!-- BACK TO TOP -->
+            <button class="c-footer__top-btn" id="js-scroll-top" aria-label="Back to top">
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+        </footer>
+        <!-- end c-footer -->
+        <!-- Scripts here... -->
+        <script src="/js/jquery-3.6.1.min.js" defer></script>
+        <script src="/js/iconify.min.js" defer></script>
+    </body>
+</html>
