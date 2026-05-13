@@ -268,23 +268,127 @@
             </div>
 
             <div class="c-expertise__inner container">
-                <h2 class="c-expertise__title">
-                    Expertise That <span class="c-expertise__highlight highlight">Drives Results</span>
-                </h2>
-                <div class="c-expertise__grid" id="js-expertise-grid">
-                    <!-- Expertise cards injected via JS -->
-                </div>
-
                 <!-- SKILLS / TECH STACK -->
                 <div class="c-skills">
-                    <h3 class="c-skills__title">
+                    <h2 class="c-skills__title">
                         Skills & <span class="highlight">Tech Stack</span>
-                    </h3>
+                    </h2>
+                    <p class="c-skills__desc">
+                        I use modern web technologies to build responsive and high-performance web applications.
+                    </p>
                     <div class="c-skills__grid" id="js-tech-stack-grid">
                         <!-- tech stack cards injected via JS -->
                     </div>
                     <div class="c-expertise__btn">
                         <a href="javascript:void(0);" class="c-btn c-btn--ghost c-btn--view c--btn--my-skills is-pulsing">View more</a>
+                    </div>
+                </div>
+
+                <!-- start c-certificates -->
+                
+
+                <section class="c-certificates section-bg" id="certificates">
+
+                    <div class="c-certificates__inner container">
+
+                        <div class="c-certificates__header">
+                            <h2 class="c-certificates__title">
+                                Check Out My
+                                <span class="highlight">Certificates</span>
+                            </h2>
+
+                            <p class="c-certificates__desc">
+                                I have completed multiple programming certifications to enhance my skills.
+                            </p>
+                        </div>
+
+                        <div class="c-certificates__grid">
+
+                            <article class="c-certificates__card js-cert-card"
+                                data-image="certificates/img_html_certificate.jpg"
+                                data-title="HTML Essentials certificate">
+
+                                <div class="c-certificates__media">
+                                    <img src="certificates/img_html_certificate.jpg"
+                                        alt="HTML Essentials certificate"
+                                        loading="lazy"
+                                        width="400"
+                                        height="260">
+
+                                    <span class="c-certificates__badge">Verified</span>
+
+                                    <div class="c-certificates__overlay">
+                                        <span class="c-certificates__cta">View Certificate</span>
+                                    </div>
+                                </div>
+
+                                <div class="c-certificates__content">
+                                    <h3 class="c-certificates__name">HTML Essentials</h3>
+                                    <span class="c-certificates__org">Cisco Network Academy</span>
+                                </div>
+
+                            </article>
+                            <article class="c-certificates__card js-cert-card"
+                                data-image="certificates/img_css_certificate.jpg"
+                                data-title="CSS Essentials certificate">
+
+                                <div class="c-certificates__media">
+                                    <img src="certificates/img_css_certificate.jpg"
+                                        alt="CSS Essentials certificate"
+                                        loading="lazy"
+                                        width="400"
+                                        height="260">
+
+                                    <span class="c-certificates__badge">Verified</span>
+
+                                    <div class="c-certificates__overlay">
+                                        <span class="c-certificates__cta">View Certificate</span>
+                                    </div>
+                                </div>
+
+                                <div class="c-certificates__content">
+                                    <h3 class="c-certificates__name">CSS Essentials</h3>
+                                    <span class="c-certificates__org">Cisco Network Academy</span>
+                                </div>
+
+                            </article>
+                            <article class="c-certificates__card js-cert-card"
+                                data-image="certificates/img_ai_certificate.jpg"
+                                data-title="Apply AI Analyze Customer Reviews certificate">
+
+                                <div class="c-certificates__media">
+                                    <img src="certificates/img_ai_certificate.jpg"
+                                        alt="Apply AI Analyze Customer Reviews certificate"
+                                        loading="lazy"
+                                        width="400"
+                                        height="260">
+
+                                    <span class="c-certificates__badge">Verified</span>
+
+                                    <div class="c-certificates__overlay">
+                                        <span class="c-certificates__cta">View Certificate</span>
+                                    </div>
+                                </div>
+
+                                <div class="c-certificates__content">
+                                    <h3 class="c-certificates__name">Apply AI Analyze Customer Reviews</h3>
+                                    <span class="c-certificates__org">Cisco Network Academy</span>
+                                </div>
+
+                            </article>
+
+                        </div>
+                    </div>
+
+                </section>
+                <!-- end c-certificates -->
+
+                <div class="c-expertise__block">
+                    <h2 class="c-expertise__title">
+                        Expertise That <span class="c-expertise__highlight highlight">Drives Results</span>
+                    </h2>
+                    <div class="c-expertise__grid" id="js-expertise-grid">
+                        <!-- Expertise cards injected via JS -->
                     </div>
                 </div>
             </div>
@@ -616,6 +720,20 @@
             </button>
         </footer>
         <!-- end c-footer -->
+
+        <!-- ✅ MODAL CERTIFICATE -->
+        <div class="c-certificates__modal" id="cert-modal" aria-hidden="true">
+
+            <div class="c-certificates__modal-overlay js-modal-close"></div>
+
+            <div class="c-certificates__modal-content">
+                <button class="c-certificates__close js-modal-close">&times;</button>
+
+                <img id="cert-modal-img" alt="">
+                <p id="cert-modal-title"></p>
+            </div>
+
+        </div>
         <!-- Scripts here... -->
         <!-- =========================
             SCRIPTS (OPTIMIZED)
