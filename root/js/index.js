@@ -16,7 +16,7 @@ function initApp() {
         initExpertiseSection(),
         initTechStack(),
         initPerformanceSection(),
-        initContactForm(),
+        // initContactForm(),
         initScrollTop(),
         initCvDownload(),
         initDeferredProjects(),
@@ -403,39 +403,39 @@ async function initTestimonials() {
         }
     else console.error("[Testimonials] Slider not found");
 }
-function initContactForm() {
-    const e = document.getElementById("js-contact-form");
-    if (!e) return;
-    const t = e.querySelector('button[type="submit"]');
-    e.addEventListener("submit", async (n) => {
-        n.preventDefault();
-        const s = e.querySelectorAll("[required]");
-        let i = !0;
-        if (
-            (s.forEach((e) => {
-                e.classList.remove("is-error"), e.value.trim() || (e.classList.add("is-error"), (i = !1));
-            }),
-            !i)
-        )
-            return;
-        const c = t.textContent;
-        (t.disabled = !0), (t.textContent = "Sending...");
-        try {
-            const t = new FormData(e);
-            await fetch("/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(t).toString(),
-            }),
-                e.reset(),
-                openSuccessModal();
-        } catch (e) {
-            console.error("[FORM ERROR]", e), alert("Failed to send message.");
-        } finally {
-            (t.disabled = !1), (t.textContent = c);
-        }
-    });
-}
+// function initContactForm() {
+//     const e = document.getElementById("js-contact-form");
+//     if (!e) return;
+//     const t = e.querySelector('button[type="submit"]');
+//     e.addEventListener("submit", async (n) => {
+//         n.preventDefault();
+//         const s = e.querySelectorAll("[required]");
+//         let i = !0;
+//         if (
+//             (s.forEach((e) => {
+//                 e.classList.remove("is-error"), e.value.trim() || (e.classList.add("is-error"), (i = !1));
+//             }),
+//             !i)
+//         )
+//             return;
+//         const c = t.textContent;
+//         (t.disabled = !0), (t.textContent = "Sending...");
+//         try {
+//             const t = new FormData(e);
+//             await fetch("/", {
+//                 method: "POST",
+//                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
+//                 body: new URLSearchParams(t).toString(),
+//             }),
+//                 e.reset(),
+//                 openSuccessModal();
+//         } catch (e) {
+//             console.error("[FORM ERROR]", e), alert("Failed to send message.");
+//         } finally {
+//             (t.disabled = !1), (t.textContent = c);
+//         }
+//     });
+// }
 function openSuccessModal() {
     const e = document.getElementById("js-success-modal"),
         t = document.getElementById("js-close-modal");
