@@ -1,0 +1,26 @@
+[
+    {
+        "title": "HTML Essentials",
+        "issuer": "Cisco Network Academy",
+        "image": "certificates/img_html_certificate.jpg",
+        "issued": "May 2026",
+        "description": "Learned semantic HTML, accessibility basics, and modern page structuring techniques.",
+        "tags": ["HTML5", "Accessibility", "Web Structure"]
+    },
+    {
+        "title": "CSS Essentials",
+        "issuer": "Cisco Network Academy",
+        "image": "certificates/img_css_certificate.jpg",
+        "issued": "May 2026",
+        "description": "Focused on modern CSS including layouts, flexbox, grid systems, and responsive design.",
+        "tags": ["CSS3", "Responsive", "Web Design"]
+    },
+    {
+        "title": "Apply AI Analyze Customer Reviews",
+        "issuer": "Cisco Network Academy",
+        "image": "certificates/img_ai_certificate.jpg",
+        "issued": "May 2026",
+        "description": "Applied AI techniques to extract insights from customer feedback and sentiment analysis.",
+        "tags": ["AI", "Data Analysis", "Automation"]
+    }
+]
