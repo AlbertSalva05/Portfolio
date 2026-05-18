@@ -93,11 +93,11 @@
             <div class="c-nav__inner container">
                 <!-- Logo -->
                 <div class="c-nav__logo">
-                    <a href="#hero"><img src="images/img_nav_logo.webp" class="" fetchpriority="high" decoding="sync" loading="eager" alt=""></a>
+                    <a href="#hero"><img src="images/img_nav_logo.webp" class="" fetchpriority="high" decoding="sync" loading="eager" alt="JAS logo"></a>
                 </div>
                 <!-- Navigation -->
                 <nav class="c-nav__menu" id="js-menu" aria-label="Primary Navigation">
-                    <ul class="c-nav__menu-list">
+                    <ul role="list" class="c-nav__menu-list">
                         <li><a href="#hero" class="c-nav__link">Home</a></li>
                         <li><a href="#about" class="c-nav__link">About</a></li>
                         <li><a href="#projects" class="c-nav__link">Projects</a></li>
@@ -163,7 +163,7 @@
                     <!-- Stats Card -->
                     <div class="c-hero__card">
                         <p class="c-hero__badge">Available for new opportunities</p>
-                        <ul class="c-hero__stats">
+                        <ul role="list" class="c-hero__stats">
                             <li>
                                 <strong>100+</strong> Projects
                             </li>
@@ -218,7 +218,7 @@
                             alt="Profile"
                             />
                     </div>
-                    <ul class="c-about__stats">
+                    <ul role="list" class="c-about__stats">
                         <li class="c-about__stat">
                             <strong>100+</strong>
                             <span>Projects Delivered</span>
@@ -241,7 +241,7 @@
                     <p class="c-about__text">With experience in development, QA, and project management, I bridge the gap between technical execution and strategic delivery.</p>
                     <!-- Skills -->
                     <div class="c-about__skills">
-						<ul class="c-about__skills-grid" id="js-skills-grid">
+						<ul role="list" class="c-about__skills-grid" id="js-skills-grid">
 							<!-- about skills injected via JS -->
 						</ul>
 					</div>
@@ -364,7 +364,7 @@
                 </h2>
 
                 <!-- SEO FALLBACK (IMPORTANT) -->
-                <ol class="c-process__grid-content" id="js-process-grid">
+                <ol role="list" class="c-process__grid-content" id="js-process-grid">
                     <li class="c-process__card is-visible">
                         <span class="c-process__step">01</span>
                         <h3 class="c-process__card-title">Discovery & Planning</h3>
@@ -515,7 +515,7 @@
                         <h2 class="c-contact__title"> Let’s Build Something <span class="c-contact__highlight highlight">Exceptional</span>
                         </h2>
                         <p class="c-contact__desc"> Have an idea or project in mind? Let’s create something impactful, scalable, and conversion-driven. </p>
-                        <ul class="c-contact__benefits">
+                        <ul role="list" class="c-contact__benefits">
                             <li>✔ Fast response within 24 hours</li>
                             <li>✔ Conversion-focused solutions</li>
                             <li>✔ Clean, scalable development</li>
@@ -551,14 +551,15 @@
                             <input type="text" class="c-contact__input" name="name" placeholder="Your Name" required="">
                             <input type="email" class="c-contact__input" name="email" placeholder="Your Email" required="">
 
-                            <select class="c-contact__input" name="project_type" required="">
+                            <select class="c-contact__input" name="project_type" required="" aria-label="Project Type">
                                 <option value="" disabled="" selected="">Project Type</option>
-                                <option>Web Development</option>
-                                <option>SEO Optimization</option>
-                                <option>UI/UX Design</option>
+                                <option value="Web Development">Web Development</option>
+                                <option value="SEO Optimization">SEO Optimization</option>
+                                <option value="UI/UX Design">UI/UX Design</option>
                             </select>
 
-                            <select class="c-contact__input" name="contact_method" required="">
+                            <select class="c-contact__input" name="contact_method" required="" aria-label="Contact Method">
+                                <option value="" disabled="" selected="">Contact Method</option>
                                 <option value="email">Email</option>
                                 <option value="chat">Chat (Messenger / WhatsApp)</option>
                                 <option value="call">Phone Call</option>
@@ -593,7 +594,7 @@
                     </div>
                     <div class="c-footer__col c-footer__col--divider">
                         <h4 class="c-footer__title">Quick Links</h4>
-                        <ul class="c-footer__list">
+                        <ul role="list" class="c-footer__list">
                             <li>
                                 <a href="#hero">Home</a>
                             </li>
@@ -610,7 +611,7 @@
                     </div>
                     <div class="c-footer__col c-footer__col--divider">
                         <h4 class="c-footer__title">Services</h4>
-                        <ul class="c-footer__list">
+                        <ul role="list" class="c-footer__list">
                             <li>Web Development</li>
                             <li>SEO Optimization</li>
                             <li>UI/UX Design</li>
@@ -653,8 +654,7 @@
         <!-- end c-footer -->
 
         <!-- ✅ MODAL CERTIFICATE -->
-        <div class="c-certificates__modal" id="cert-modal" aria-hidden="true">
-
+        <div class="c-certificates__modal" id="cert-modal" role="dialog" aria-modal="true" aria-hidden="true">
             <div class="c-certificates__modal-overlay js-modal-close"></div>
 
             <div class="c-certificates__modal-content">
